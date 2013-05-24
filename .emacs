@@ -39,14 +39,14 @@
 (setq default-buffer-file-coding-system 'utf-8)
 
 ;;setting English Font
-(set-face-attribute
- 'default nil :font "consolas 11")
+;;(set-face-attribute
+;; 'default nil :font "consolas 11")
 
 ;; Chinese Font
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-   (set-fontset-font (frame-parameter nil 'font)
-                    charset
-                   (font-spec :family "Microsoft Yahei" :size 13)))
+;;(dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;   (set-fontset-font (frame-parameter nil 'font)
+;;                    charset
+;;                   (font-spec :family "Microsoft Yahei" :size 13)))
 
 (setq c-basic-offset 4)
 (setq default-tab-width 4)
@@ -169,6 +169,8 @@
 
 (load "~/.emacs.d/color-theme-molokai.el")
 (color-theme-molokai)
+(require 'hl-line)
+(global-hl-line-mode 1)
 
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'auto-complete-config)
