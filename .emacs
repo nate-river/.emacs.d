@@ -51,6 +51,8 @@
 ;;------------------------------------
 ;;-----emacs original settings--------
 
+(add-to-list 'load-path "~/.emacs.d/el")
+
 ;;hidden emacs starup-message
 (setq inhibit-startup-message t)
 
@@ -145,7 +147,6 @@
 ;;-----functions base on files 
 ;;placed in .emacs.d/ dir-----------
 
-(add-to-list 'load-path "~/.emacs.d/")
 
 (require 'php-mode)
 ;;auto-load php-mode
@@ -157,8 +158,7 @@
 (require 'evil)
 (evil-mode 1)
 
-(add-to-list 'load-path
-             "~/.emacs.d/yasnippet")
+(add-to-list 'load-path  "~/.emacs.d/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
 
