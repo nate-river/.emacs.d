@@ -1,4 +1,3 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;session setting
 ;;(require 'session)
 ;;(add-hook 'after-init-hook 'session-initialize)
@@ -18,8 +17,6 @@
 ;;      '((top . 0) (left . 250) 
 ;;        (width . 180) (height .  50)))
 ;;switch buffer setting
-;;(require 'iswitchb)
-;;(iswitch-default-keybindings)
 ;;format emacs title
 ;;(setq frame-title-format "L@%b::%m@")
 ;;(menu-bar-mode nil)
@@ -48,10 +45,27 @@
 ;;(load "~/.emacs.d/color-theme-molokai.el")
 ;;(color-theme-molokai)
 
-;;------------------------------------
-;;-----emacs original settings--------
 
 (add-to-list 'load-path "~/.emacs.d/el")
+
+(require 'php-mode)
+;;auto-load php-mode
+(add-to-list 
+ 'auto-mode-alist 
+ '("\\.php[34]?\\'\\|\\.phtml\\'" . php-mode))
+
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+(evil-mode 1)
+
+(add-to-list 'load-path  "~/.emacs.d/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
+
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
+(ac-config-default)
+
 
 ;;hidden emacs starup-message
 (setq inhibit-startup-message t)
@@ -71,6 +85,9 @@
 ;;line set
 (column-number-mode t)
 (global-linum-mode 1)
+
+(require 'iswitchb)
+(iswitch-default-keybindings)
 
 (load "desktop")
 (desktop-load-default)
@@ -142,29 +159,6 @@
         try-expand-line
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
-
-;;--------------------------------------------
-;;-----functions base on files 
-;;placed in .emacs.d/ dir-----------
-
-
-(require 'php-mode)
-;;auto-load php-mode
-(add-to-list 
- 'auto-mode-alist 
- '("\\.php[34]?\\'\\|\\.phtml\\'" . php-mode))
-
-(add-to-list 'load-path "~/.emacs.d/evil")
-(require 'evil)
-(evil-mode 1)
-
-(add-to-list 'load-path  "~/.emacs.d/yasnippet")
-(require 'yasnippet)
-(yas-global-mode 1)
-
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
-(ac-config-default)
 
 ;;key bindings
 (global-set-key (kbd "C-x x") 'evil-mode)
