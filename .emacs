@@ -1,5 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d/el")
-
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 (require 'php-mode)
 ;;auto-load php-mode
 (add-to-list 
@@ -151,3 +151,7 @@
 (define-key dired-mode-map [(y)] (lambda () (interactive)
 (dired (concat ffip-project-root "~/Documents/green/Root/script"))))
 ))
+
+;;(require 'color-theme)
+;;(color-theme-blackboard)
+
