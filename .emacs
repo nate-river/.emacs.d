@@ -8,7 +8,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
-(evil-mode 1)
+;;(evil-mode 1)
 
 (add-to-list 'load-path  "~/.emacs.d/yasnippet")
 (require 'yasnippet)
@@ -18,56 +18,13 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
 (ac-config-default)
 
+(require 'psvn)
 
-;;hidden emacs starup-message
-(setq inhibit-startup-message t)
-
-;;set the default text coding system
-(setq locale-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
-(setq default-buffer-file-coding-system 'utf-8)
-
-(setq c-basic-offset 4)
-(setq default-tab-width 4)
-(setq-default indent-tabs-mode nil)
-(setq sgml-basic-offset 4)
-
-(global-font-lock-mode t)
 (require 'ibuffer)
-(global-set-key (kbd "C-x b") 'ibuffer)
 
-;;line set
-(column-number-mode t)
-(global-linum-mode 1)
+(require 'dired-isearch)
 
-(require 'iswitchb)
-(iswitch-default-keybindings)
-
-(load "desktop")
-(desktop-load-default)
-(desktop-read)
-
-;;make emacs can open image
-(auto-image-file-mode)
-(show-paren-mode t)
-(setq show-paren-style 'parentheses)
-
-(require 'hl-line)
-(global-hl-line-mode 1)
-
-(setq enable-recursive-minibuffers t)
-(setq initial-scratch-message nil)
-(global-auto-revert-mode 1)
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;disable backup
-(setq backup-inhibited t)
-;disable auto save
-(setq auto-save-default nil)
-
+(require 'find-file-in-project)
 
 ;;hideshow
 (load-library "hideshow")
@@ -98,6 +55,47 @@
 (add-hook 'javascript-mode-hook 'hs-minor-mode)
 (add-hook 'html-mode-hook       'hs-minor-mode)
 
+(load "desktop")
+(desktop-load-default)
+(desktop-read)
+
+;;hidden emacs starup-message
+(setq inhibit-startup-message t)
+
+;;set the default text coding system
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+
+(setq c-basic-offset 4)
+(setq default-tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq sgml-basic-offset 4)
+
+(global-font-lock-mode t)
+
+;;line set
+(column-number-mode t)
+(global-linum-mode 1)
+
+;;make emacs can open image
+(auto-image-file-mode)
+(show-paren-mode t)
+(setq show-paren-style 'parentheses)
+
+(setq enable-recursive-minibuffers t)
+(setq initial-scratch-message nil)
+(global-auto-revert-mode 1)
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;disable backup
+(setq backup-inhibited t)
+;disable auto save
+(setq auto-save-default nil)
+
 ;;scroll page settings
 (setq scroll-step 1
       scroll-margin 3
@@ -118,16 +116,38 @@
         try-complete-lisp-symbol))
 
 ;;key bindings
-(global-set-key (kbd "C-x x") 'evil-mode)
-(global-set-key (kbd "C-x C-p") 'bookmark-set)
-(global-set-key (kbd "C-x C-n") 'bookmark-jump)
-(global-set-key [(f4)] 'kill-buffer-and-window)
-(global-set-key [(f3)] 'speedbar)
-(global-set-key [(f5)] 'other-window)
-(global-set-key [(control s)] 'isearch-forward-regexp)
-(global-set-key [(control meta s)] 'isearch-forward)
-(global-set-key [(control r)] 'isearch-backward-regexp)
-(global-set-key [(control meta r)] 'isearch-backward)
-(global-set-key [(meta ?/)] 'hippie-expand)
-(global-set-key  [(f1)] 'toggle-hiding)
-(global-set-key  [(f2)]  'toggle-selective-display)
+(setq mac-command-modifier 'control)
+(global-set-key [(control e)] 'evil-local-mode)
+(global-set-key [(control ?/)] 'hippie-expand)
+(global-set-key [(f1)] 'ibuffer)
+(global-set-key [(f2)] 'toggle-selective-display)
+(global-set-key [(f3)] 'rgrep)
+(global-set-key [(f4)] 'eshell)
+(global-set-key [(control l)] '(lambda () (interactive) (dired ".")))
+
+(setq ffip-project-root-function '~/Documents/green)
+
+(add-hook 'dired-mode-hook
+'(lambda ()
+(define-key dired-mode-map [(tab)] 'dired-do-isearch-regexp) 
+(define-key dired-mode-map "\e\t" 'dired-do-isearch) 
+(define-key dired-mode-map [(?\d)] 'dired-up-directory) 
+(define-key dired-mode-map [(backspace)] 'dired-up-directory)
+(define-key dired-mode-map  "z" 'dired-name-filter-only-show-matched-lines) 
+(define-key dired-mode-map [(s)] 'dired-isearch-forward) 
+(define-key dired-mode-map [(r)] 'dired-isearch-backward)
+(define-key dired-mode-map [(\/)] (lambda () (interactive)
+(dired "/"))) ; 按/返回根目录,
+(define-key dired-mode-map [(\~)] (lambda () (interactive)
+(dired "~/"))) ; 按~返回home.
+
+;; 下面的快捷键打开rails项目目录对应目录, 仅供参考, 快捷键对应于c, v, b
+(define-key dired-mode-map [(c)] (lambda () (interactive)
+(dired (concat ffip-project-root "~/Documents/green/App/Defaults/Controller"))))
+(define-key dired-mode-map [(v)] (lambda () (interactive)
+(dired (concat ffip-project-root "~/Documents/green/App/Defaults/View"))))
+(define-key dired-mode-map [(b)] (lambda () (interactive)
+(dired (concat ffip-project-root "~/Documents/green/App/Defaults/Model"))))
+(define-key dired-mode-map [(y)] (lambda () (interactive)
+(dired (concat ffip-project-root "~/Documents/green/Root/script"))))
+))

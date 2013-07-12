@@ -1041,7 +1041,7 @@ directory, like `default-directory'."
     (define-key map (kbd "t") 'ibuffer-toggle-marks)
     (define-key map (kbd "u") 'ibuffer-unmark-forward)
     (define-key map (kbd "=") 'ibuffer-diff-with-file)
-    (define-key map (kbd "j") 'ibuffer-jump-to-buffer)
+    ;;(define-key map (kbd "j") 'ibuffer-jump-to-buffer)
     (define-key map (kbd "DEL") 'ibuffer-unmark-backward)
     (define-key map (kbd "M-DEL") 'ibuffer-unmark-all)
     (define-key map (kbd "* *") 'ibuffer-unmark-all)
@@ -1057,13 +1057,13 @@ directory, like `default-directory'."
     
     (define-key map (kbd "d") 'ibuffer-mark-for-delete)
     (define-key map (kbd "C-d") 'ibuffer-mark-for-delete-backwards)
-    (define-key map (kbd "k") 'ibuffer-mark-for-delete)
+    ;;(define-key map (kbd "k") 'ibuffer-mark-for-delete)
     (define-key map (kbd "x") 'ibuffer-do-kill-on-deletion-marks)
   
     ;; immediate operations
-    (define-key map (kbd "n") 'ibuffer-forward-line)
+    (define-key map (kbd "j") 'ibuffer-forward-line)
     (define-key map (kbd "SPC") 'forward-line)
-    (define-key map (kbd "p") 'ibuffer-backward-line)
+    (define-key map (kbd "k") 'ibuffer-backward-line)
     (define-key map (kbd "l") 'ibuffer-redisplay)
     (define-key map (kbd "g") 'ibuffer-update)
     (define-key map "`" 'ibuffer-switch-format)
@@ -1122,7 +1122,7 @@ directory, like `default-directory'."
     (define-key map (kbd "W") 'ibuffer-do-view-and-eval)
     (define-key map (kbd "X") 'ibuffer-do-shell-command)
   
-    (define-key map (kbd "k") 'ibuffer-do-kill-lines)
+    ;;(define-key map (kbd "k") 'ibuffer-do-kill-lines)
     (define-key map (kbd "w") 'ibuffer-copy-filename-as-kill)
 
     (define-key map (kbd "RET") 'ibuffer-visit-buffer)
