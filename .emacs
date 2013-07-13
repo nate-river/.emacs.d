@@ -26,6 +26,7 @@
 
 (require 'find-file-in-project)
 
+(set-default-font "Monoco 11")
 ;;hideshow
 (load-library "hideshow")
 
@@ -86,7 +87,7 @@
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)
 
-(setq enable-recursive-minibuffers t)
+;;(setq enable-recursive-minibuffers t)
 (setq initial-scratch-message nil)
 (global-auto-revert-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -98,7 +99,7 @@
 
 ;;scroll page settings
 (setq scroll-step 1
-      scroll-margin 3
+      scroll-margin 4
       scroll-conservatively 10000)
 
 ;;auto complete
@@ -117,12 +118,13 @@
 
 ;;key bindings
 (setq mac-command-modifier 'control)
-(global-set-key [(control e)] 'evil-local-mode)
+(global-set-key [(escape)] 'evil-local-mode)
 (global-set-key [(control ?/)] 'hippie-expand)
 (global-set-key [(f1)] 'ibuffer)
 (global-set-key [(f2)] 'toggle-selective-display)
 (global-set-key [(f3)] 'rgrep)
 (global-set-key [(f4)] 'eshell)
+(global-set-key [(f8)] 'svn-status)
 (global-set-key [(control l)] '(lambda () (interactive) (dired ".")))
 
 (setq ffip-project-root-function '~/Documents/green)
@@ -136,6 +138,10 @@
 (define-key dired-mode-map  "z" 'dired-name-filter-only-show-matched-lines) 
 (define-key dired-mode-map [(s)] 'dired-isearch-forward) 
 (define-key dired-mode-map [(r)] 'dired-isearch-backward)
+
+(define-key dired-mode-map [(j)] 'dired-next-line)
+(define-key dired-mode-map [(k)] 'dired-previous-line)
+
 (define-key dired-mode-map [(\/)] (lambda () (interactive)
 (dired "/"))) ; 按/返回根目录,
 (define-key dired-mode-map [(\~)] (lambda () (interactive)
@@ -152,6 +158,46 @@
 (dired (concat ffip-project-root "~/Documents/green/Root/script"))))
 ))
 
-;;(require 'color-theme)
-;;(color-theme-blackboard)
 
+(require 'color-theme)
+(color-theme-initialize)
+(load-file "~/.emacs.d/color-theme-6.6.0/themes/color-theme-blackboard.el")
+(color-theme-blackboard)
+
+
+(require 'ido)
+(ido-mode t)
+
+(require 'session)
+(add-hook 'after-init-hook 'session-initialize)
+
+(require 'browse-kill-ring)
+(global-set-key [(control x)(k)] 'browse-kill-ring)
+(browse-kill-ring-default-keybindings)
+
+(require 'recentf)
+(recentf-mode 1)
+
+(defun recentf-open-files-compl ()
+  (interactive)
+  (let* ((all-files recentf-list)
+	 (tocpl (mapcar (function 
+			 (lambda (x) (cons (file-name-nondirectory x) x))) all-files))
+	 (prompt (append '("File name: ") tocpl))
+	 (fname (completing-read (car prompt) (cdr prompt) nil nil)))
+    (find-file (cdr (assoc-ignore-representation fname tocpl))))) 
+
+(global-set-key [(control x)(f)] 'recentf-open-files-compl)
+
+
+(global-set-key "%" 'match-paren)
+          
+(defun match-paren (arg)
+  "Go to the matching paren if on a paren; otherwise insert %."
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+	((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+	(t (self-insert-command (or arg 1)))))
+
+(autoload 'mmm-mode "mmm-mode" "Multiple Major Modes" t)
+(autoload 'mmm-parse-buffer "mmm-mode" "Automatic MMM-ification" t)
