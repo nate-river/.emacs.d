@@ -77,6 +77,7 @@
 (setq sgml-basic-offset 4)
 
 (global-font-lock-mode t)
+(scroll-bar-mode nil)
 
 ;;line set
 (column-number-mode t)
@@ -126,6 +127,7 @@
 (global-set-key [(f4)] 'eshell)
 (global-set-key [(f8)] 'svn-status)
 (global-set-key [(control l)] '(lambda () (interactive) (dired ".")))
+(global-set-key [(control s)] 'occur)
 
 (setq ffip-project-root-function '~/Documents/green)
 
@@ -159,10 +161,10 @@
 ))
 
 
-(require 'color-theme)
-(color-theme-initialize)
-(load-file "~/.emacs.d/color-theme-6.6.0/themes/color-theme-blackboard.el")
-(color-theme-blackboard)
+;;(require 'color-theme)
+;;(color-theme-initialize)
+;;(load-file "~/.emacs.d/color-theme-6.6.0/themes/color-theme-blackboard.el")
+;;(color-theme-blackboard)
 
 
 (require 'ido)
