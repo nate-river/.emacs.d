@@ -1,10 +1,7 @@
 (add-to-list 'load-path "~/.emacs.d/el")
-(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
+;;(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
+
 (require 'php-mode)
-;;auto-load php-mode
-(add-to-list 
- 'auto-mode-alist 
- '("\\.php[34]?\\'\\|\\.phtml\\'" . php-mode))
 
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
@@ -53,8 +50,19 @@
 (add-hook 'perl-mode-hook       'hs-minor-mode)
 (add-hook 'sh-mode-hook         'hs-minor-mode)
 (add-hook 'php-mode-hook        'hs-minor-mode)
-(add-hook 'javascript-mode-hook 'hs-minor-mode)
+(add-hook 'js-mode-hook        'hs-minor-mode)
 (add-hook 'html-mode-hook       'hs-minor-mode)
+
+(add-hook 'c-mode-common-hook   'evil-local-mode)
+(add-hook 'emacs-lisp-mode-hook 'evil-local-mode)
+(add-hook 'java-mode-hook       'evil-local-mode)
+(add-hook 'lisp-mode-hook       'evil-local-mode)
+(add-hook 'perl-mode-hook       'evil-local-mode)
+(add-hook 'sh-mode-hook         'evil-local-mode)
+(add-hook 'php-mode-hook        'evil-local-mode)
+(add-hook 'js-mode-hook 'evil-local-mode)
+(add-hook 'html-mode-hook       'evil-local-mode)
+(add-hook 'css-mode-hook       'evil-local-mode)
 
 (load "desktop")
 (desktop-load-default)
@@ -65,7 +73,6 @@
 
 ;;set the default text coding system
 (setq locale-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
@@ -119,13 +126,19 @@
 
 ;;key bindings
 (setq mac-command-modifier 'control)
-(global-set-key [(escape)] 'evil-local-mode)
+
 (global-set-key [(control ?/)] 'hippie-expand)
+
 (global-set-key [(f1)] 'ibuffer)
 (global-set-key [(f2)] 'toggle-selective-display)
 (global-set-key [(f3)] 'rgrep)
 (global-set-key [(f4)] 'eshell)
+(global-set-key [(f5)] 'evil-local-mode)
 (global-set-key [(f8)] 'svn-status)
+
+(global-set-key [(f10)] 'clipboard-yank)
+(global-set-key [(f11)] 'clipboard-kill-region)
+
 (global-set-key [(control l)] '(lambda () (interactive) (dired ".")))
 (global-set-key [(control s)] 'occur)
 
@@ -149,7 +162,6 @@
 (define-key dired-mode-map [(\~)] (lambda () (interactive)
 (dired "~/"))) ; 按~返回home.
 
-;; 下面的快捷键打开rails项目目录对应目录, 仅供参考, 快捷键对应于c, v, b
 (define-key dired-mode-map [(c)] (lambda () (interactive)
 (dired (concat ffip-project-root "~/Documents/green/App/Defaults/Controller"))))
 (define-key dired-mode-map [(v)] (lambda () (interactive)
@@ -191,15 +203,7 @@
 
 (global-set-key [(control x)(f)] 'recentf-open-files-compl)
 
-
-(global-set-key "%" 'match-paren)
-          
-(defun match-paren (arg)
-  "Go to the matching paren if on a paren; otherwise insert %."
-  (interactive "p")
-  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
-	((looking-at "\\s\)") (forward-char 1) (backward-list 1))
-	(t (self-insert-command (or arg 1)))))
-
 (autoload 'mmm-mode "mmm-mode" "Multiple Major Modes" t)
 (autoload 'mmm-parse-buffer "mmm-mode" "Automatic MMM-ification" t)
+
+(setq x-select-enable-clipboard t)
