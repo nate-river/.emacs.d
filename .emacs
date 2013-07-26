@@ -162,6 +162,10 @@
 (define-key dired-mode-map [(\~)] (lambda () (interactive)
 (dired "~/"))) ; 按~返回home.
 
+(define-key dired-mode-map [(n)] (lambda () (interactive)
+(dired (concat ffip-project-root "~/Documents/green/Lib"))))
+(define-key dired-mode-map [(p)] (lambda () (interactive)
+(dired (concat ffip-project-root "~/Documents/green/Root/style"))))
 (define-key dired-mode-map [(c)] (lambda () (interactive)
 (dired (concat ffip-project-root "~/Documents/green/App/Defaults/Controller"))))
 (define-key dired-mode-map [(v)] (lambda () (interactive)
