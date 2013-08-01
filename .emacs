@@ -50,7 +50,7 @@
 (add-hook 'perl-mode-hook       'hs-minor-mode)
 (add-hook 'sh-mode-hook         'hs-minor-mode)
 (add-hook 'php-mode-hook        'hs-minor-mode)
-(add-hook 'js-mode-hook        'hs-minor-mode)
+(add-hook 'js-mode-hook         'hs-minor-mode)
 (add-hook 'html-mode-hook       'hs-minor-mode)
 
 (add-hook 'c-mode-common-hook   'evil-local-mode)
@@ -60,9 +60,10 @@
 (add-hook 'perl-mode-hook       'evil-local-mode)
 (add-hook 'sh-mode-hook         'evil-local-mode)
 (add-hook 'php-mode-hook        'evil-local-mode)
-(add-hook 'js-mode-hook 'evil-local-mode)
+(add-hook 'js-mode-hook         'evil-local-mode)
 (add-hook 'html-mode-hook       'evil-local-mode)
-(add-hook 'css-mode-hook       'evil-local-mode)
+(add-hook 'css-mode-hook        'evil-local-mode)
+(add-hook 'sql-mode-hook        'evil-local-mode)
 
 (load "desktop")
 (desktop-load-default)
@@ -146,10 +147,10 @@
 
 (add-hook 'dired-mode-hook
 '(lambda ()
-(define-key dired-mode-map [(tab)] 'dired-do-isearch-regexp) 
+;;(define-key dired-mode-map [(tab)] 'dired-do-isearch-regexp) 
 (define-key dired-mode-map "\e\t" 'dired-do-isearch) 
 (define-key dired-mode-map [(?\d)] 'dired-up-directory) 
-(define-key dired-mode-map [(backspace)] 'dired-up-directory)
+(define-key dired-mode-map [(tab)] 'dired-up-directory)
 (define-key dired-mode-map  "z" 'dired-name-filter-only-show-matched-lines) 
 (define-key dired-mode-map [(s)] 'dired-isearch-forward) 
 (define-key dired-mode-map [(r)] 'dired-isearch-backward)
@@ -211,3 +212,9 @@
 (autoload 'mmm-parse-buffer "mmm-mode" "Automatic MMM-ification" t)
 
 (setq x-select-enable-clipboard t)
+
+(require 'textmate)
+(tm/initialize)
+
+;;不让evil-mode污染光标颜色
+(setq evil-default-cursor nil)

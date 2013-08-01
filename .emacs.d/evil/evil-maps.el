@@ -54,7 +54,7 @@
 (define-key evil-normal-state-map "Y" 'evil-yank-line)
 (define-key evil-normal-state-map "&" 'evil-ex-repeat-substitute)
 (define-key evil-normal-state-map "g&" 'evil-ex-repeat-global-substitute)
-(define-key evil-normal-state-map "g8" 'what-cursor-position)
+;;(define-key evil-normal-state-map "g8" 'what-cursor-position)
 (define-key evil-normal-state-map "ga" 'what-cursor-position)
 (define-key evil-normal-state-map "gi" 'evil-insert-resume)
 (define-key evil-normal-state-map "gJ" 'evil-join-whitespace)
@@ -189,6 +189,19 @@
 (define-key evil-motion-state-map "T" 'evil-find-char-to-backward)
 (define-key evil-motion-state-map "w" 'evil-forward-word-begin)
 (define-key evil-motion-state-map "W" 'evil-forward-WORD-begin)
+
+(define-key evil-motion-state-map "g1" 'tabbar-select-tab-1)
+(define-key evil-motion-state-map "g2" 'tabbar-select-tab-2)
+(define-key evil-motion-state-map "g3" 'tabbar-select-tab-3)
+(define-key evil-motion-state-map "g4" 'tabbar-select-tab-4)
+(define-key evil-motion-state-map "g5" 'tabbar-select-tab-5)
+(define-key evil-motion-state-map "g6" 'tabbar-select-tab-6)
+(define-key evil-motion-state-map "g7" 'tabbar-select-tab-7)
+(define-key evil-motion-state-map "g8" 'tabbar-select-tab-8)
+(define-key evil-motion-state-map "g9" 'tabbar-select-tab-9)
+
+(define-key evil-motion-state-map "go" 'recentf-open-files-compl)
+
 (define-key evil-motion-state-map "gd" 'evil-goto-definition)
 (define-key evil-motion-state-map "ge" 'evil-backward-word-end)
 (define-key evil-motion-state-map "gE" 'evil-backward-WORD-end)
