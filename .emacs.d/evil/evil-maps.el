@@ -41,7 +41,10 @@
 (define-key evil-normal-state-map "m" 'evil-set-marker)
 (define-key evil-normal-state-map "o" 'evil-open-below)
 (define-key evil-normal-state-map "O" 'evil-open-above)
-(define-key evil-normal-state-map "p" 'evil-paste-after)
+
+;;(define-key evil-normal-state-map "p" 'evil-paste-after)
+(define-key evil-normal-state-map "p" 'auto-indent-yank)
+
 (define-key evil-normal-state-map "P" 'evil-paste-before)
 (define-key evil-normal-state-map "q" 'evil-record-macro)
 (define-key evil-normal-state-map "r" 'evil-replace)

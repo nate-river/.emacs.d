@@ -1,6 +1,8 @@
 (add-to-list 'load-path "~/.emacs.d/el")
 ;;(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 
+(require 'auto-indent-mode)
+
 (require 'php-mode)
 
 (add-to-list 'load-path "~/.emacs.d/evil")
@@ -51,7 +53,6 @@
 (add-hook 'sh-mode-hook         'hs-minor-mode)
 (add-hook 'php-mode-hook        'hs-minor-mode)
 (add-hook 'js-mode-hook         'hs-minor-mode)
-(add-hook 'html-mode-hook       'hs-minor-mode)
 
 (add-hook 'c-mode-common-hook   'evil-local-mode)
 (add-hook 'emacs-lisp-mode-hook 'evil-local-mode)
@@ -61,7 +62,6 @@
 (add-hook 'sh-mode-hook         'evil-local-mode)
 (add-hook 'php-mode-hook        'evil-local-mode)
 (add-hook 'js-mode-hook         'evil-local-mode)
-(add-hook 'html-mode-hook       'evil-local-mode)
 (add-hook 'css-mode-hook        'evil-local-mode)
 (add-hook 'sql-mode-hook        'evil-local-mode)
 
@@ -101,9 +101,9 @@
 (global-auto-revert-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;disable backup
+                                        ;disable backup
 (setq backup-inhibited t)
-;disable auto save
+                                        ;disable auto save
 (setq auto-save-default nil)
 
 ;;scroll page settings
@@ -146,36 +146,36 @@
 (setq ffip-project-root-function '~/Documents/green)
 
 (add-hook 'dired-mode-hook
-'(lambda ()
-;;(define-key dired-mode-map [(tab)] 'dired-do-isearch-regexp) 
-(define-key dired-mode-map "\e\t" 'dired-do-isearch) 
-(define-key dired-mode-map [(?\d)] 'dired-up-directory) 
-(define-key dired-mode-map [(tab)] 'dired-up-directory)
-(define-key dired-mode-map  "z" 'dired-name-filter-only-show-matched-lines) 
-(define-key dired-mode-map [(s)] 'dired-isearch-forward) 
-(define-key dired-mode-map [(r)] 'dired-isearch-backward)
+          '(lambda ()
+             ;;(define-key dired-mode-map [(tab)] 'dired-do-isearch-regexp) 
+             (define-key dired-mode-map "\e\t" 'dired-do-isearch) 
+             (define-key dired-mode-map [(?\d)] 'dired-up-directory) 
+             (define-key dired-mode-map [(tab)] 'dired-up-directory)
+             (define-key dired-mode-map  "z" 'dired-name-filter-only-show-matched-lines) 
+             (define-key dired-mode-map [(s)] 'dired-isearch-forward) 
+             (define-key dired-mode-map [(r)] 'dired-isearch-backward)
 
-(define-key dired-mode-map [(j)] 'dired-next-line)
-(define-key dired-mode-map [(k)] 'dired-previous-line)
+             (define-key dired-mode-map [(j)] 'dired-next-line)
+             (define-key dired-mode-map [(k)] 'dired-previous-line)
 
-(define-key dired-mode-map [(\/)] (lambda () (interactive)
-(dired "/"))) ; 按/返回根目录,
-(define-key dired-mode-map [(\~)] (lambda () (interactive)
-(dired "~/"))) ; 按~返回home.
+             (define-key dired-mode-map [(\/)] (lambda () (interactive)
+                                                 (dired "/"))) ; 按/返回根目录,
+             (define-key dired-mode-map [(\~)] (lambda () (interactive)
+                                                 (dired "~/"))) ; 按~返回home.
 
-(define-key dired-mode-map [(n)] (lambda () (interactive)
-(dired (concat ffip-project-root "~/Documents/green/Lib"))))
-(define-key dired-mode-map [(p)] (lambda () (interactive)
-(dired (concat ffip-project-root "~/Documents/green/Root/style"))))
-(define-key dired-mode-map [(c)] (lambda () (interactive)
-(dired (concat ffip-project-root "~/Documents/green/App/Defaults/Controller"))))
-(define-key dired-mode-map [(v)] (lambda () (interactive)
-(dired (concat ffip-project-root "~/Documents/green/App/Defaults/View"))))
-(define-key dired-mode-map [(b)] (lambda () (interactive)
-(dired (concat ffip-project-root "~/Documents/green/App/Defaults/Model"))))
-(define-key dired-mode-map [(y)] (lambda () (interactive)
-(dired (concat ffip-project-root "~/Documents/green/Root/script"))))
-))
+             (define-key dired-mode-map [(n)] (lambda () (interactive)
+                                                (dired (concat ffip-project-root "~/Documents/green/App/Admin/Controller"))))
+             (define-key dired-mode-map [(p)] (lambda () (interactive)
+                                                (dired (concat ffip-project-root "~/Documents/green/Root/style"))))
+             (define-key dired-mode-map [(c)] (lambda () (interactive)
+                                                (dired (concat ffip-project-root "~/Documents/green/App/Defaults/Controller"))))
+             (define-key dired-mode-map [(v)] (lambda () (interactive)
+                                                (dired (concat ffip-project-root "~/Documents/green/App/Defaults/View"))))
+             (define-key dired-mode-map [(b)] (lambda () (interactive)
+                                                (dired (concat ffip-project-root "~/Documents/green/App/Defaults/Model"))))
+             (define-key dired-mode-map [(y)] (lambda () (interactive)
+                                                (dired (concat ffip-project-root "~/Documents/green/Root/script"))))
+             ))
 
 
 ;;(require 'color-theme)
@@ -200,10 +200,10 @@
 (defun recentf-open-files-compl ()
   (interactive)
   (let* ((all-files recentf-list)
-	 (tocpl (mapcar (function 
-			 (lambda (x) (cons (file-name-nondirectory x) x))) all-files))
-	 (prompt (append '("File name: ") tocpl))
-	 (fname (completing-read (car prompt) (cdr prompt) nil nil)))
+         (tocpl (mapcar (function 
+                         (lambda (x) (cons (file-name-nondirectory x) x))) all-files))
+         (prompt (append '("File name: ") tocpl))
+         (fname (completing-read (car prompt) (cdr prompt) nil nil)))
     (find-file (cdr (assoc-ignore-representation fname tocpl))))) 
 
 (global-set-key [(control x)(f)] 'recentf-open-files-compl)
@@ -218,3 +218,11 @@
 
 ;;不让evil-mode污染光标颜色
 (setq evil-default-cursor nil)
+
+(defun my-html-mode-hooks ()
+  "Set ups for how I like html mode."
+  (auto-fill-mode 0)              
+  (evil-local-mode 1)
+  (hs-minor-mode 1)
+  )
+(add-hook 'html-mode-hook 'my-html-mode-hooks)
