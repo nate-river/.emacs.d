@@ -46,7 +46,10 @@
 (define-key evil-normal-state-map "p" 'auto-indent-yank)
 
 (define-key evil-normal-state-map "P" 'evil-paste-before)
-(define-key evil-normal-state-map "q" 'evil-record-macro)
+
+;; (define-key evil-normal-state-map "q" 'evil-record-macro)
+(define-key evil-normal-state-map "q" 'qiang-comment-dwim-line)
+
 (define-key evil-normal-state-map "r" 'evil-replace)
 (define-key evil-normal-state-map "R" 'evil-replace-state)
 (define-key evil-normal-state-map "s" 'evil-substitute)

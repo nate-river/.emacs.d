@@ -1,5 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d/el")
-;;(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 
 (require 'auto-indent-mode)
 
@@ -71,6 +71,8 @@
 
 ;;hidden emacs starup-message
 (setq inhibit-startup-message t)
+
+(setq-default mode-line-format nil) 
 
 ;;set the default text coding system
 (setq locale-coding-system 'utf-8)
@@ -178,11 +180,6 @@
              ))
 
 
-;;(require 'color-theme)
-;;(color-theme-initialize)
-;;(load-file "~/.emacs.d/color-theme-6.6.0/themes/color-theme-blackboard.el")
-;;(color-theme-blackboard)
-
 
 (require 'ido)
 (ido-mode t)
@@ -226,3 +223,21 @@
   (hs-minor-mode 1)
   )
 (add-hook 'html-mode-hook 'my-html-mode-hooks)
+
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-dark-blue)
+;;(load-file "~/.emacs.d/color-theme-6.6.0/themes/color-theme-blackboard.el")
+;;(color-theme-blackboard)
+
+(defun qiang-comment-dwim-line (&optional arg)
+  "Replacement for the comment-dwim command.
+If no region is selected and current line is not blank and we are not at the end of the line,
+then comment current line.
+Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+  (interactive "*P")
+  (comment-normalize-vars)
+  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    (comment-dwim arg)))
+(global-set-key "\M-;" 'qiang-comment-dwim-line)
