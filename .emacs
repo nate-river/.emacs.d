@@ -1,6 +1,11 @@
 (add-to-list 'load-path "~/.emacs.d/el")
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 
+;; (require 'color-theme)
+;; (color-theme-initialize)
+;; (color-theme-dark-blue)
+;; (color-theme-blackboard)
+
 (require 'auto-indent-mode)
 
 (require 'php-mode)
@@ -71,7 +76,7 @@
 
 ;;hidden emacs starup-message
 (setq inhibit-startup-message t)
-
+(tool-bar-mode nil)
 (setq-default mode-line-format nil) 
 
 ;;set the default text coding system
@@ -144,6 +149,7 @@
 
 (global-set-key [(control l)] '(lambda () (interactive) (dired ".")))
 (global-set-key [(control s)] 'occur)
+(global-set-key [(control r)] 'isearch-backward-regexp)
 
 (setq ffip-project-root-function '~/Documents/green)
 
@@ -215,6 +221,7 @@
 
 ;;不让evil-mode污染光标颜色
 (setq evil-default-cursor nil)
+(set-background-color "black")
 
 (defun my-html-mode-hooks ()
   "Set ups for how I like html mode."
@@ -224,11 +231,6 @@
   )
 (add-hook 'html-mode-hook 'my-html-mode-hooks)
 
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-dark-blue)
-;;(load-file "~/.emacs.d/color-theme-6.6.0/themes/color-theme-blackboard.el")
-;;(color-theme-blackboard)
 
 (defun qiang-comment-dwim-line (&optional arg)
   "Replacement for the comment-dwim command.

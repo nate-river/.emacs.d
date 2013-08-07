@@ -42,8 +42,8 @@
 (define-key evil-normal-state-map "o" 'evil-open-below)
 (define-key evil-normal-state-map "O" 'evil-open-above)
 
-;;(define-key evil-normal-state-map "p" 'evil-paste-after)
-(define-key evil-normal-state-map "p" 'auto-indent-yank)
+(define-key evil-normal-state-map "p" 'evil-paste-after)
+;; (define-key evil-normal-state-map "p" 'auto-indent-yank)
 
 (define-key evil-normal-state-map "P" 'evil-paste-before)
 
@@ -52,7 +52,10 @@
 
 (define-key evil-normal-state-map "r" 'evil-replace)
 (define-key evil-normal-state-map "R" 'evil-replace-state)
-(define-key evil-normal-state-map "s" 'evil-substitute)
+
+;; (define-key evil-normal-state-map "s" 'evil-substitute)
+(define-key evil-normal-state-map "s" 'save-buffer)
+
 (define-key evil-normal-state-map "S" 'evil-change-whole-line)
 (define-key evil-normal-state-map "x" 'evil-delete-char)
 (define-key evil-normal-state-map "X" 'evil-delete-backward-char)
@@ -266,7 +269,10 @@
 (define-key evil-motion-state-map (kbd "z RET") (vconcat "z" [return]))
 (define-key evil-motion-state-map "zz" 'evil-scroll-line-to-center)
 (define-key evil-motion-state-map "z." "zz^")
+
 (define-key evil-motion-state-map "zb" 'evil-scroll-line-to-bottom)
+(define-key evil-motion-state-map "zp" 'auto-indent-yank)
+
 (define-key evil-motion-state-map "z-" "zb^")
 (define-key evil-motion-state-map "v" 'evil-visual-char)
 (define-key evil-motion-state-map "V" 'evil-visual-line)
