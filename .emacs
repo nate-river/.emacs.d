@@ -1,10 +1,11 @@
 (add-to-list 'load-path "~/.emacs.d/el")
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 
-;; (require 'color-theme)
-;; (color-theme-initialize)
+(require 'color-theme)
+(color-theme-initialize)
 ;; (color-theme-dark-blue)
 ;; (color-theme-blackboard)
+(color-theme-mac-classic)
 
 (require 'auto-indent-mode)
 
@@ -149,7 +150,7 @@
 
 (global-set-key [(control l)] '(lambda () (interactive) (dired ".")))
 (global-set-key [(control s)] 'occur)
-(global-set-key [(control r)] 'isearch-backward-regexp)
+(global-set-key [(control r)] 'isearch-forward-regexp)
 
 (setq ffip-project-root-function '~/Documents/green)
 

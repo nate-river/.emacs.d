@@ -1,6 +1,6 @@
 #contributor : Andrew Gwozdziewycz <web@apgwoz.com>
 #name : function ...(...)
 # --
-function ${function_name}(${function_args}) {
+function ${function_name}() {
    $0
 }

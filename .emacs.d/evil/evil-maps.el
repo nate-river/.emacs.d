@@ -88,7 +88,9 @@
 (define-key evil-normal-state-map "@" 'evil-execute-macro)
 (define-key evil-normal-state-map "\"" 'evil-use-register)
 (define-key evil-normal-state-map "~" 'evil-invert-char)
+
 (define-key evil-normal-state-map "=" 'evil-indent)
+
 (define-key evil-normal-state-map "<" 'evil-shift-left)
 (define-key evil-normal-state-map ">" 'evil-shift-right)
 (define-key evil-normal-state-map "ZZ" 'evil-save-modified-and-close)
