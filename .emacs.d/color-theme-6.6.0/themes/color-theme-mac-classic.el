@@ -44,7 +44,7 @@
 
      ;;;; General 
      ;; Comment
-     (font-lock-comment-face ((t (:foreground "#B2B2B2" :italic t)))) 
+     (font-lock-comment-face ((t (:foreground "#B2B2B2" )))) 
      (font-lock-comment-delimiter-face ((t (:foreground "#B2B2B2"))))
     
      ;; Keyword
