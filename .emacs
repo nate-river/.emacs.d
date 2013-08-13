@@ -78,6 +78,7 @@
 ;;hidden emacs starup-message
 (setq inhibit-startup-message t)
 (tool-bar-mode nil)
+(setq frame-title-format "")
 (setq-default mode-line-format nil) 
 
 ;;set the default text coding system
@@ -244,3 +245,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
 (global-set-key "\M-;" 'qiang-comment-dwim-line)
+
+(eval-after-load 'dired '(progn (require 'joseph-single-dired)))
+(kill-buffer "*scratch*")
