@@ -1377,8 +1377,10 @@ A and B must be line-info's."
 
   (define-key svn-status-mode-map (kbd "C-n") 'svn-status-next-line)
   (define-key svn-status-mode-map (kbd "C-p") 'svn-status-previous-line)
-  (define-key svn-status-mode-map (kbd "n") 'svn-status-next-line)
-  (define-key svn-status-mode-map (kbd "p") 'svn-status-previous-line)
+
+  (define-key svn-status-mode-map (kbd "j") 'svn-status-next-line)
+  (define-key svn-status-mode-map (kbd "k") 'svn-status-previous-line)
+
   (define-key svn-status-mode-map (kbd "<down>") 'svn-status-next-line)
   (define-key svn-status-mode-map (kbd "<up>") 'svn-status-previous-line)
   (define-key svn-status-mode-map (kbd "C-x C-j") 'svn-status-dired-jump)
@@ -1406,7 +1408,9 @@ A and B must be line-info's."
   ;; reducing clutter in `where-is'.
   (define-key svn-status-mode-property-map [(control ?i)] 'svn-status-property-edit-svn-ignore)
   (define-key svn-status-mode-property-map (kbd "TAB") 'svn-status-property-edit-svn-ignore)
-  (define-key svn-status-mode-property-map (kbd "k") 'svn-status-property-set-keyword-list)
+
+  ;; (define-key svn-status-mode-property-map (kbd "k") 'svn-status-property-set-keyword-list)
+
   (define-key svn-status-mode-property-map (kbd "y") 'svn-status-property-set-eol-style)
   (define-key svn-status-mode-property-map (kbd "x") 'svn-status-property-set-executable)
   ;; TODO: Why is `svn-status-select-line' in `svn-status-mode-property-map'?

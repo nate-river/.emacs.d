@@ -3,17 +3,21 @@
 
 (require 'color-theme)
 (color-theme-initialize)
-;; (color-theme-dark-blue)
+;; (color-theme-mac-classic)
+;; (color-theme-molokai)
 ;; (color-theme-blackboard)
-(color-theme-mac-classic)
+(color-theme-all-hallows-eve)
 
 (require 'auto-indent-mode)
 
 (require 'php-mode)
+;;auto-load php-mode
+(add-to-list 
+ 'auto-mode-alist 
+ '("\\.php[34]?\\'\\|\\.phtml\\'" . php-mode))
 
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
-;;(evil-mode 1)
 
 (add-to-list 'load-path  "~/.emacs.d/yasnippet")
 (require 'yasnippet)
@@ -110,14 +114,12 @@
 (global-auto-revert-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 
-                                        ;disable backup
 (setq backup-inhibited t)
-                                        ;disable auto save
 (setq auto-save-default nil)
 
 ;;scroll page settings
 (setq scroll-step 1
-      scroll-margin 4
+      scroll-margin 6
       scroll-conservatively 10000)
 
 ;;auto complete
@@ -233,7 +235,6 @@
   )
 (add-hook 'html-mode-hook 'my-html-mode-hooks)
 
-
 (defun qiang-comment-dwim-line (&optional arg)
   "Replacement for the comment-dwim command.
 If no region is selected and current line is not blank and we are not at the end of the line,
@@ -248,3 +249,4 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (eval-after-load 'dired '(progn (require 'joseph-single-dired)))
 (kill-buffer "*scratch*")
+(put 'narrow-to-page 'disabled nil)
