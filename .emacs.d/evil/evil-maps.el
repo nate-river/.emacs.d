@@ -102,7 +102,8 @@
 
 ;; go to last change
 (define-key evil-normal-state-map "g;" 'goto-last-change)
-(define-key evil-normal-state-map "g," 'goto-last-change-reverse)
+;; (define-key evil-normal-state-map "g," 'goto-last-change-reverse)
+(define-key evil-normal-state-map "g," 'other-window)
 
 ;; undo
 (define-key evil-normal-state-map "u" 'undo)

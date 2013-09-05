@@ -1,16 +1,9 @@
 (add-to-list 'load-path "~/.emacs.d/el")
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 
-(require 'color-theme)
-(color-theme-initialize)
-;; (color-theme-mac-classic)
-;; (color-theme-molokai)
-;; (color-theme-blackboard)
-(color-theme-all-hallows-eve)
-
 (require 'auto-indent-mode)
-
 (require 'php-mode)
+
 ;;auto-load php-mode
 (add-to-list 
  'auto-mode-alist 
@@ -250,3 +243,10 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (eval-after-load 'dired '(progn (require 'joseph-single-dired)))
 (kill-buffer "*scratch*")
 (put 'narrow-to-page 'disabled nil)
+
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-mac-classic)
+;; (color-theme-molokai)
+;; (color-theme-blackboard)
+;; (color-theme-all-hallows-eve)
