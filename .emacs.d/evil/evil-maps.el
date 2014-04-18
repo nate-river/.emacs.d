@@ -69,7 +69,7 @@
 (define-key evil-normal-state-map "gJ" 'evil-join-whitespace)
 (define-key evil-normal-state-map "gq" 'evil-fill)
 (define-key evil-normal-state-map "gu" 'evil-downcase)
-(define-key evil-normal-state-map "gU" 'evil-upcase)
+(define-key evil-normal-state-map "gu" 'evil-upcase)
 (define-key evil-normal-state-map "gf" 'find-file-at-point)
 (define-key evil-normal-state-map "gF" 'evil-find-file-at-point-with-line)
 (define-key evil-normal-state-map "g?" 'evil-rot13)
@@ -101,7 +101,8 @@
 (define-key evil-normal-state-map [remap yank-pop] 'evil-paste-pop)
 
 ;; go to last change
-(define-key evil-normal-state-map "g;" 'goto-last-change)
+;;(define-key evil-normal-state-map "g;" 'goto-last-change)
+(define-key evil-normal-state-map "g;" 'browse-kill-ring)
 ;; (define-key evil-normal-state-map "g," 'goto-last-change-reverse)
 (define-key evil-normal-state-map "g," 'other-window)
 

@@ -32,7 +32,7 @@
      (border-glyph ((t (nil))))
      (buffers-tab ((t (:background "#0C1021" :foreground "#F8F8F8"))))
      (font-lock-builtin-face ((t (:foreground "#F8F8F8"))))
-     (font-lock-comment-face ((t (:italic t :foreground "#AEAEAE"))))
+     (font-lock-comment-face ((t (:foreground "#AEAEAE"))))
      (font-lock-constant-face ((t (:foreground "#D8FA3C"))))
      (font-lock-doc-string-face ((t (:foreground "DarkOrange"))))
      (font-lock-function-name-face ((t (:foreground "#FF6400"))))

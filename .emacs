@@ -5,8 +5,8 @@
 (require 'php-mode)
 
 ;;auto-load php-mode
-(add-to-list 
- 'auto-mode-alist 
+(add-to-list
+ 'auto-mode-alist
  '("\\.php[34]?\\'\\|\\.phtml\\'" . php-mode))
 
 (add-to-list 'load-path "~/.emacs.d/evil")
@@ -20,7 +20,7 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
 (ac-config-default)
 
-(require 'psvn)
+;; (require 'psvn)
 
 (require 'ibuffer)
 
@@ -28,7 +28,7 @@
 
 (require 'find-file-in-project)
 
-(set-default-font "Monoco 11")
+(set-default-font "monaco 14")
 ;;hideshow
 (load-library "hideshow")
 
@@ -74,9 +74,9 @@
 
 ;;hidden emacs starup-message
 (setq inhibit-startup-message t)
-(tool-bar-mode nil)
+(tool-bar-mode t)
 (setq frame-title-format "")
-(setq-default mode-line-format nil) 
+;; (setq-default mode-line-format nil)
 
 ;;set the default text coding system
 (setq locale-coding-system 'utf-8)
@@ -95,7 +95,7 @@
 
 ;;line set
 (column-number-mode t)
-(global-linum-mode 1)
+(global-linum-mode 0);
 
 ;;make emacs can open image
 (auto-image-file-mode)
@@ -152,12 +152,12 @@
 
 (add-hook 'dired-mode-hook
           '(lambda ()
-             ;;(define-key dired-mode-map [(tab)] 'dired-do-isearch-regexp) 
-             (define-key dired-mode-map "\e\t" 'dired-do-isearch) 
-             (define-key dired-mode-map [(?\d)] 'dired-up-directory) 
+             ;;(define-key dired-mode-map [(tab)] 'dired-do-isearch-regexp)
+             (define-key dired-mode-map "\e\t" 'dired-do-isearch)
+             (define-key dired-mode-map [(?\d)] 'dired-up-directory)
              (define-key dired-mode-map [(tab)] 'dired-up-directory)
-             (define-key dired-mode-map  "z" 'dired-name-filter-only-show-matched-lines) 
-             (define-key dired-mode-map [(s)] 'dired-isearch-forward) 
+             (define-key dired-mode-map  "z" 'dired-name-filter-only-show-matched-lines)
+             (define-key dired-mode-map [(s)] 'dired-isearch-forward)
              (define-key dired-mode-map [(r)] 'dired-isearch-backward)
 
              (define-key dired-mode-map [(j)] 'dired-next-line)
@@ -200,11 +200,11 @@
 (defun recentf-open-files-compl ()
   (interactive)
   (let* ((all-files recentf-list)
-         (tocpl (mapcar (function 
+         (tocpl (mapcar (function
                          (lambda (x) (cons (file-name-nondirectory x) x))) all-files))
          (prompt (append '("File name: ") tocpl))
          (fname (completing-read (car prompt) (cdr prompt) nil nil)))
-    (find-file (cdr (assoc-ignore-representation fname tocpl))))) 
+    (find-file (cdr (assoc-ignore-representation fname tocpl)))))
 
 (global-set-key [(control x)(f)] 'recentf-open-files-compl)
 
@@ -218,11 +218,11 @@
 
 ;;不让evil-mode污染光标颜色
 (setq evil-default-cursor nil)
-(set-background-color "black")
+;; (set-background-color "black")
 
 (defun my-html-mode-hooks ()
   "Set ups for how I like html mode."
-  (auto-fill-mode 0)              
+  (auto-fill-mode 0)
   (evil-local-mode 1)
   (hs-minor-mode 1)
   )
@@ -246,7 +246,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-mac-classic)
-;; (color-theme-molokai)
+;; (color-theme-mac-classic)
+(color-theme-molokai)
 ;; (color-theme-blackboard)
 ;; (color-theme-all-hallows-eve)
+;; (tabbar-mode nil)
