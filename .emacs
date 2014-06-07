@@ -251,3 +251,5 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; (color-theme-blackboard)
 ;; (color-theme-all-hallows-eve)
 ;; (tabbar-mode nil)
+
+(osx-key-mode nil)
