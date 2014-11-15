@@ -47,11 +47,11 @@
 
 (define-key evil-normal-state-map "P" 'evil-paste-before)
 
-(define-key evil-normal-state-map "R" 'evil-record-macro)
+;; (define-key evil-normal-state-map "q" 'evil-record-macro)
 (define-key evil-normal-state-map "q" 'qiang-comment-dwim-line)
 
 (define-key evil-normal-state-map "r" 'evil-replace)
-;; (define-key evil-normal-state-map "R" 'evil-replace-state)
+(define-key evil-normal-state-map "R" 'evil-replace-state)
 
 ;; (define-key evil-normal-state-map "s" 'evil-substitute)
 (define-key evil-normal-state-map "s" 'save-buffer)
@@ -111,8 +111,7 @@
 
 (when (fboundp 'undo-tree-undo)
   (define-key evil-normal-state-map "u" 'undo-tree-undo)
-  ;; (define-key evil-normal-state-map "\C-r" 'undo-tree-redo))
-  (define-key evil-normal-state-map "U" 'undo-tree-redo))
+  (define-key evil-normal-state-map "\C-r" 'undo-tree-redo))
 
 ;; window commands
 (define-prefix-command 'evil-window-map)
@@ -343,7 +342,7 @@
 (define-key evil-visual-state-map "O" 'evil-visual-exchange-corners)
 (define-key evil-visual-state-map "R" 'evil-change)
 (define-key evil-visual-state-map "u" 'evil-downcase)
-;; (define-key evil-visual-state-map "U" 'evil-upcase)
+(define-key evil-visual-state-map "U" 'evil-upcase)
 (define-key evil-visual-state-map "a" evil-outer-text-objects-map)
 (define-key evil-visual-state-map "i" evil-inner-text-objects-map)
 (define-key evil-visual-state-map [remap evil-repeat] 'undefined)
@@ -362,8 +361,8 @@
 (define-key evil-insert-state-map "\C-r" 'evil-paste-from-register)
 (define-key evil-insert-state-map "\C-y" 'evil-copy-from-above)
 (define-key evil-insert-state-map "\C-e" 'evil-copy-from-below)
-;; (define-key evil-insert-state-map "\C-n" 'evil-complete-next)
-;; (define-key evil-insert-state-map "\C-p" 'evil-complete-previous)
+(define-key evil-insert-state-map "\C-n" 'evil-complete-next)
+(define-key evil-insert-state-map "\C-p" 'evil-complete-previous)
 (define-key evil-insert-state-map "\C-x\C-n" 'evil-complete-next-line)
 (define-key evil-insert-state-map "\C-x\C-p" 'evil-complete-previous-line)
 (define-key evil-insert-state-map [remap newline] 'evil-ret)
