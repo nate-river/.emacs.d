@@ -111,7 +111,7 @@
                                                  (dired "~/"))) 
 
              (define-key dired-mode-map [(n)] (lambda () (interactive)
-                                                (dired (concat ffip-project-root "~/Documents/WebDeveloperManual/"))))
+                                                (dired (concat ffip-project-root "~/Documents/jy/"))))
              (define-key dired-mode-map [(p)] (lambda () (interactive)
                                                 (dired (concat ffip-project-root "~/Documents/WebDeveloperManual/css"))))
              (define-key dired-mode-map [(c)] (lambda () (interactive)

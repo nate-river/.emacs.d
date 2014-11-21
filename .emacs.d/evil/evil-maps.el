@@ -55,6 +55,7 @@
 
 ;; (define-key evil-normal-state-map "s" 'evil-substitute)
 (define-key evil-normal-state-map "s" 'save-buffer)
+(define-key evil-normal-state-map "L" 'ibuffer)
 
 (define-key evil-normal-state-map "S" 'evil-change-whole-line)
 (define-key evil-normal-state-map "x" 'evil-delete-char)
@@ -102,7 +103,7 @@
 
 ;; go to last change
 ;;(define-key evil-normal-state-map "g;" 'goto-last-change)
-(define-key evil-normal-state-map "g;" 'browse-kill-ring)
+(define-key evil-normal-state-map "gl" 'browse-kill-ring)
 ;; (define-key evil-normal-state-map "g," 'goto-last-change-reverse)
 (define-key evil-normal-state-map "g," 'other-window)
 
@@ -125,7 +126,7 @@
 (define-key evil-window-map "k" 'evil-window-up)
 (define-key evil-window-map "K" 'evil-window-move-very-top)
 (define-key evil-window-map "l" 'evil-window-right)
-(define-key evil-window-map "L" 'evil-window-move-far-right)
+;; (define-key evil-window-map "L" 'evil-window-move-far-right)
 (define-key evil-window-map "n" 'evil-window-new)
 (define-key evil-window-map "o" 'delete-other-windows)
 (define-key evil-window-map "p" 'evil-window-mru)
@@ -171,7 +172,7 @@
 ;;; Motion state
 
 ;; "0" is a special command when called first
-(evil-redirect-digit-argument evil-motion-state-map "0" 'evil-beginning-of-line)
+(evil-redirect-digit-argument evil-motion-state-map "0" 'evil-first-non-blank)
 (define-key evil-motion-state-map "1" 'digit-argument)
 (define-key evil-motion-state-map "2" 'digit-argument)
 (define-key evil-motion-state-map "3" 'digit-argument)
@@ -250,7 +251,9 @@
 (define-key evil-motion-state-map ";" 'evil-repeat-find-char)
 (define-key evil-motion-state-map "?" 'evil-search-backward)
 (define-key evil-motion-state-map "|" 'evil-goto-column)
-(define-key evil-motion-state-map "^" 'evil-first-non-blank)
+
+;; (define-key evil-motion-state-map "^" 'evil-first-non-blank)
+
 (define-key evil-motion-state-map "+" 'evil-next-line-first-non-blank)
 (define-key evil-motion-state-map "_" 'evil-next-line-1-first-non-blank)
 (define-key evil-motion-state-map "-" 'evil-previous-line-first-non-blank)
@@ -356,7 +359,6 @@
 ;; (define-key evil-operator-state-map [escape] 'keyboard-quit)
 
 ;;; Insert state
-
 (define-key evil-insert-state-map "\C-k" 'evil-insert-digraph)
 (define-key evil-insert-state-map "\C-o" 'evil-execute-in-normal-state)
 (define-key evil-insert-state-map "\C-r" 'evil-paste-from-register)
@@ -368,7 +370,11 @@
 (define-key evil-insert-state-map "\C-x\C-p" 'evil-complete-previous-line)
 (define-key evil-insert-state-map [remap newline] 'evil-ret)
 (define-key evil-insert-state-map [remap newline-and-indent] 'evil-ret)
+
 (define-key evil-insert-state-map [escape] 'evil-normal-state)
+;; (define-key evil-insert-state-map [tab] 'evil-normal-state)
+(define-key evil-insert-state-map "\C-j" 'evil-normal-state)
+
 (define-key evil-insert-state-map
   (read-kbd-macro evil-toggle-key) 'evil-emacs-state)
 

@@ -1,0 +1,114 @@
+ls
+ls
+ls
+ls
+ls
+sl
+ls
+ls
+ls
+svn 
+svn s
+svn st
+cd ~/Documents/
+ls
+cd green/
+ls
+svn st
+svn st
+clear
+ls
+exit
+ls
+svn st
+exit
+ls
+exit
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+exit
+exit
+ls
+exit
+exit
+exit
+ls
+cp .emacs emacs/
+cp -R .emacs.d/ emacs/.emacs.d/
+cd emacs/
+ls
+ls -al
+cd .emacs.d/
+ls -al
+rm -rf .emacs.d/
+ls -al
+cd ..
+cd ..
+ls
+cp .emacs.d/* emacs/.emacs.d/
+cp -R .emacs.d/* emacs/.emacs.d/
+exit
+ls
+cd ~
+cp .emacs emacs/
+cp .emacs.d/* emacs/.emacs.d/
+cp -R .emacs.d/* emacs/.emacs.d/
+ls
+ln
+/bin/lin
+rm .emacs
+rm -R .emacs.d/
+ls -al
+rm .emacs\~
+ls -al
+ln -s emacs/.emacs .emacs
+ls -al
+ln -s emacs/.emacs.d/ .emacs.d/
+ls -al
+cd .emacs.d/
+ls -al
+cd ..
+ls
+cd emacs/
+ls
+ls a-l
+ls -al
+cd ..
+ls
+ls -al
+rm -rf .emacs.d
+ls -al
+ln -s emacs/.emacs.d/ .emacs.d
+ls -al
+cd .emacs.d/
+ls
+ls -al
+cd ..
+rm -rf .emacs.d
+ls -al
+ln -s emacs/.emacs.d .emacs.d
+ls -al
+ls
+cd ~/Documents/
+ls
+ls
+ls
+cd converse.js/
+ls
+ls
+ls -al
+ls
+git state
+git --help
+git status
