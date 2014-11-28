@@ -441,6 +441,8 @@
 
 ;;; Code:
 
+(require 'tabbar)
+
 (require 'easymenu)
 (require 'derived)
 (require 'font-lock)
@@ -1119,11 +1121,15 @@ directory, like `default-directory'."
     (define-key map (kbd "T") 'ibuffer-do-toggle-read-only)
     (define-key map (kbd "U") 'ibuffer-do-replace-regexp)
     (define-key map (kbd "V") 'ibuffer-do-revert)
-    (define-key map (kbd "W") 'ibuffer-do-view-and-eval)
+
+    ;; (define-key map (kbd "W") 'ibuffer-do-view-and-eval)
+    ;; (define-key map (kbd "w") 'ibuffer-copy-filename-as-kill)
+    (define-key map (kbd "W") 'tabbar-backward-tab)
+    (define-key map (kbd "w") 'tabbar-forward-tab)
+
     (define-key map (kbd "X") 'ibuffer-do-shell-command)
   
     ;;(define-key map (kbd "k") 'ibuffer-do-kill-lines)
-    (define-key map (kbd "w") 'ibuffer-copy-filename-as-kill)
 
     (define-key map (kbd "RET") 'ibuffer-visit-buffer)
     (define-key map (kbd "e") 'ibuffer-visit-buffer)

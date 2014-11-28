@@ -103,7 +103,7 @@
 
 ;; go to last change
 ;;(define-key evil-normal-state-map "g;" 'goto-last-change)
-(define-key evil-normal-state-map "gl" 'browse-kill-ring)
+(define-key evil-normal-state-map "gk" 'browse-kill-ring)
 ;; (define-key evil-normal-state-map "g," 'goto-last-change-reverse)
 (define-key evil-normal-state-map "g," 'other-window)
 
@@ -136,8 +136,10 @@
 (define-key evil-window-map "S" 'split-window-vertically)
 (define-key evil-window-map "t" 'evil-window-top-left)
 (define-key evil-window-map "v" 'split-window-horizontally)
+
 (define-key evil-window-map "w" 'evil-window-next)
 (define-key evil-window-map "W" 'evil-window-prev)
+
 (define-key evil-window-map "+" 'evil-window-increase-height)
 (define-key evil-window-map "-" 'evil-window-decrease-height)
 (define-key evil-window-map "_" 'evil-window-set-height)
@@ -202,8 +204,11 @@
 (define-key evil-motion-state-map "N" 'evil-search-previous)
 (define-key evil-motion-state-map "t" 'evil-find-char-to)
 (define-key evil-motion-state-map "T" 'evil-find-char-to-backward)
-(define-key evil-motion-state-map "w" 'evil-forward-word-begin)
-(define-key evil-motion-state-map "W" 'evil-forward-WORD-begin)
+
+;; (define-key evil-motion-state-map "w" 'evil-forward-word-begin)
+;; (define-key evil-motion-state-map "W" 'evil-forward-WORD-begin)
+(define-key evil-motion-state-map "w" 'tabbar-forward-tab)
+(define-key evil-motion-state-map "W" 'tabbar-backward-tab)
 
 (define-key evil-motion-state-map "g1" 'tabbar-select-tab-1)
 (define-key evil-motion-state-map "g2" 'tabbar-select-tab-2)
@@ -222,7 +227,9 @@
 (define-key evil-motion-state-map "gE" 'evil-backward-WORD-end)
 (define-key evil-motion-state-map "gg" 'evil-goto-first-line)
 (define-key evil-motion-state-map "gj" 'evil-next-visual-line)
-(define-key evil-motion-state-map "gk" 'evil-previous-visual-line)
+
+;; (define-key evil-motion-state-map "gk" 'evil-previous-visual-line)
+
 (define-key evil-motion-state-map "g0" 'evil-beginning-of-visual-line)
 (define-key evil-motion-state-map "g_" 'evil-last-non-blank)
 (define-key evil-motion-state-map "g^" 'evil-first-non-blank-of-visual-line)

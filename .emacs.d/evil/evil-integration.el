@@ -116,10 +116,22 @@
      ;; use the standard Dired bindings as a base
      (evil-make-overriding-map dired-mode-map 'normal t)
      (evil-add-hjkl-bindings dired-mode-map 'normal
-       "J" 'dired-goto-file                   ; "j"
-       "K" 'dired-do-kill-lines               ; "k"
-       "r" 'dired-do-redisplay                ; "l"
-       ";" (lookup-key dired-mode-map ":")))) ; ":d", ":v", ":s", ":e"
+       ;; "J" 'dired-goto-file                   ; "j"
+       "j" 'dired-next-line                   
+       "k" 'dired-previous-line                  
+       ;; "s" 'dired-isearch-forward                
+       [(\/)] 'evil-search-forward                
+       "n" 'evil-search-next                
+       ;; "r" 'dired-isearch-backward
+       "w" 'tabbar-forward-tab                
+       "W" 'tabbar-backward-tab                
+       ;; [(\/)] (lambda () (interactive) (dired "/"))
+       [(\~)] (lambda () (interactive) (dired "~/"))
+       "q" (lambda () (interactive) (dired "~/Documents/jy/"))
+       [(tab)] 'dired-up-directory
+
+       ;; "r" 'dired-do-redisplay                ; "l"
+       ";" (lookup-key dired-mode-map ":"))))
 
 (eval-after-load 'wdired
   '(progn
@@ -202,6 +214,8 @@
      (evil-make-overriding-map ibuffer-mode-map 'normal t)
      (evil-define-key 'normal ibuffer-mode-map
        "j" 'evil-next-line
+       "w" 'tabbar-forward-tab          
+       "W" 'tabbar-backward-tab        
        "k" 'evil-previous-line
        "RET" 'ibuffer-visit-buffer)))
 
