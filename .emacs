@@ -62,7 +62,7 @@
 
 (add-to-list
  'auto-mode-alist
- '("\\.htm\\'\\|\\.html\\'" . html-mode))
+ '("\\.html\\'" . html-mode))
 
 (add-to-list 'load-path "~/.emacs.d/el")
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
@@ -173,8 +173,8 @@
 
 (global-set-key [(control x)(f)] 'recentf-open-files-compl)
 
-(autoload 'mmm-mode "mmm-mode" "Multiple Major Modes" t)
-(autoload 'mmm-parse-buffer "mmm-mode" "Automatic MMM-ification" t)
+;; (autoload 'mmm-mode "mmm-mode" "Multiple Major Modes" t)
+;; (autoload 'mmm-parse-buffer "mmm-mode" "Automatic MMM-ification" t)
 
 (setq x-select-enable-clipboard t)
 

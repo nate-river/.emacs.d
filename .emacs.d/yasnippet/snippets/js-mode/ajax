@@ -1,0 +1,11 @@
+var url = '$1';
+var post_data = {$2};
+$.ajax(
+    url:url,
+    type:'post',
+    data:post_data,
+    success:function(data){
+        console.log(data);
+        $3;
+    }
+);

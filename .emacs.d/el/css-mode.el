@@ -71,7 +71,10 @@
 (defvar cssm-newline-before-closing-bracket nil
   "In mirror-mode, controls whether a newline should be inserted before the
 closing bracket or not.")
-(defvar cssm-indent-function #'cssm-old-style-indenter
+;; (defvar cssm-indent-function #'cssm-old-style-indenter
+;;   "Which function to use when deciding which column to indent to. To get
+;; C-style indentation, use cssm-c-style-indenter.")
+(defvar cssm-indent-function #'cssm-c-style-indenter
   "Which function to use when deciding which column to indent to. To get
 C-style indentation, use cssm-c-style-indenter.")
   
