@@ -1,0 +1,12 @@
+$1 a:link {
+  color: #FF0000
+}
+$1 a:visited {
+  color: #00FF00
+}
+$1 a:hover {
+  color: #FF00FF
+}
+$1 a:active {
+  color: #0000FF
+}

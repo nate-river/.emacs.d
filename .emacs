@@ -64,13 +64,15 @@
  'auto-mode-alist
  '("\\.html\\'" . html-mode))
 
+
 (add-to-list 'load-path "~/.emacs.d/el")
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 
 (require 'auto-indent-mode)
 (require 'php-mode)
 
-
+;; (require 'js2-mode)
+;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
@@ -145,8 +147,10 @@
 (global-set-key [(f10)] 'clipboard-yank)
 (global-set-key [(f11)] 'clipboard-kill-region)
 (global-set-key [(control l)] '(lambda () (interactive) (dired ".")))
-(global-set-key [(control s)] 'isearch-forward-regexp)
-(global-set-key [(control r)] 'isearch-backward-regexp)
+
+(global-set-key [(control s)] 'save-buffer)
+(global-set-key [(control w)] 'kill-buffer)
+(global-set-key [(control r)] 'isearch-forward-regexp)
 
 ;; (setq ffip-project-root-function '~/Documents/green)
 ;; (require 'ido)

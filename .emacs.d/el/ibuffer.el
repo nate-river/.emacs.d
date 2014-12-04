@@ -441,8 +441,8 @@
 
 ;;; Code:
 
-(require 'tabbar)
 (require 'easymenu)
+(require 'tabbar)
 (require 'derived)
 (require 'font-lock)
 ;; Needed for Emacs 20
@@ -1042,7 +1042,10 @@ directory, like `default-directory'."
     (define-key map (kbd "t") 'ibuffer-toggle-marks)
     (define-key map (kbd "u") 'ibuffer-unmark-forward)
     (define-key map (kbd "=") 'ibuffer-diff-with-file)
-    ;;(define-key map (kbd "j") 'ibuffer-jump-to-buffer)
+
+    (define-key map (kbd "j") 'ibuffer-forward-line)
+    (define-key map (kbd "k") 'ibuffer-backward-line)
+
     (define-key map (kbd "DEL") 'ibuffer-unmark-backward)
     (define-key map (kbd "M-DEL") 'ibuffer-unmark-all)
     (define-key map (kbd "* *") 'ibuffer-unmark-all)
@@ -1058,13 +1061,12 @@ directory, like `default-directory'."
     
     (define-key map (kbd "d") 'ibuffer-mark-for-delete)
     (define-key map (kbd "C-d") 'ibuffer-mark-for-delete-backwards)
-    ;;(define-key map (kbd "k") 'ibuffer-mark-for-delete)
     (define-key map (kbd "x") 'ibuffer-do-kill-on-deletion-marks)
   
     ;; immediate operations
-    (define-key map (kbd "j") 'ibuffer-forward-line)
+    (define-key map (kbd "n") 'ibuffer-forward-line)
     (define-key map (kbd "SPC") 'forward-line)
-    (define-key map (kbd "k") 'ibuffer-backward-line)
+    (define-key map (kbd "p") 'ibuffer-backward-line)
     (define-key map (kbd "l") 'ibuffer-redisplay)
     (define-key map (kbd "g") 'ibuffer-update)
     (define-key map "`" 'ibuffer-switch-format)
@@ -1120,15 +1122,11 @@ directory, like `default-directory'."
     (define-key map (kbd "T") 'ibuffer-do-toggle-read-only)
     (define-key map (kbd "U") 'ibuffer-do-replace-regexp)
     (define-key map (kbd "V") 'ibuffer-do-revert)
-
     ;; (define-key map (kbd "W") 'ibuffer-do-view-and-eval)
-    ;; (define-key map (kbd "w") 'ibuffer-copy-filename-as-kill)
-    (define-key map (kbd "W") 'tabbar-backward-tab)
-    (define-key map (kbd "w") 'tabbar-forward-tab)
-
     (define-key map (kbd "X") 'ibuffer-do-shell-command)
   
-    ;;(define-key map (kbd "k") 'ibuffer-do-kill-lines)
+    (define-key map (kbd "w") 'tabbar-forward-tab)
+    (define-key map (kbd "W") 'tabbar-backward-tab) 
 
     (define-key map (kbd "RET") 'ibuffer-visit-buffer)
     (define-key map (kbd "e") 'ibuffer-visit-buffer)
@@ -1326,45 +1324,45 @@ Do not set this variable directly!  Use the function
 (defvar ibuffer-popup-menu ibuffer-operate-menu-data)
 
 ;;; Utility functions
-;; (defun ibuffer-columnize-and-insert-list (list &optional pad-width)
-;;   "Insert LIST into the current buffer in as many columns as possible.
-;; The maximum number of columns is determined by the current window
-;; width and the longest string in LIST."
-;;   (unless pad-width
-;;     (setq pad-width 3))
-;;   (let ((width (window-width))
-;; 	(max (+ (apply #'max (mapcar #'length list))
-;; 		pad-width)))
-;;     (let ((columns (/ width max)))
-;;       (when (zerop columns)
-;; 	(setq columns 1))
-;;       (while list
-;; 	(dotimes (i (1- columns))
-;; 	  (insert (concat (car list) (make-string (- max (length (car list)))
-;; 						  ? )))
-;; 	  (setq list (cdr list)))
-;; 	(when (not (null list))
-;; 	  (insert (pop list)))
-;; 	(insert "\n")))))
+(defun ibuffer-columnize-and-insert-list (list &optional pad-width)
+  "Insert LIST into the current buffer in as many columns as possible.
+The maximum number of columns is determined by the current window
+width and the longest string in LIST."
+  (unless pad-width
+    (setq pad-width 3))
+  (let ((width (window-width))
+	(max (+ (apply #'max (mapcar #'length list))
+		pad-width)))
+    (let ((columns (/ width max)))
+      (when (zerop columns)
+	(setq columns 1))
+      (while list
+	(dotimes (i (1- columns))
+	  (insert (concat (car list) (make-string (- max (length (car list)))
+						  ? )))
+	  (setq list (cdr list)))
+	(when (not (null list))
+	  (insert (pop list)))
+	(insert "\n")))))
 
-;; (defun ibuffer-accumulate-lines (count)
-;;   (save-excursion
-;;     (let ((forwardp (> count 0))
-;; 	  (result nil))
-;;       (while (not (or (zerop count)
-;; 		      (if forwardp
-;; 			  (eobp)
-;; 			(bobp))))
-;; 	(if forwardp
-;; 	    (decf count)
-;; 	  (incf count))
-;; 	(push
-;; 	 (buffer-substring
-;; 	  (ibuffer-line-beginning-position)
-;; 	  (ibuffer-line-end-position))
-;; 	 result)
-;; 	(forward-line (if forwardp 1 -1)))
-;;       (nreverse result))))
+(defun ibuffer-accumulate-lines (count)
+  (save-excursion
+    (let ((forwardp (> count 0))
+	  (result nil))
+      (while (not (or (zerop count)
+		      (if forwardp
+			  (eobp)
+			(bobp))))
+	(if forwardp
+	    (decf count)
+	  (incf count))
+	(push
+	 (buffer-substring
+	  (ibuffer-line-beginning-position)
+	  (ibuffer-line-end-position))
+	 result)
+	(forward-line (if forwardp 1 -1)))
+      (nreverse result))))
 
 ;;; Miscellaneous functions
 (defun ibuffer-customize ()
@@ -2629,86 +2627,86 @@ become unmarked."
 ;; 	      `(lambda (buffer mark)
 ;; 		 ,@(mapcar #'ibuffer-compile-formatter format))
 
-;; (defmacro* ibuffer-define-column (symbol (&key name extra-props) &rest body)
-;;   "Define a column SYMBOL for use with `ibuffer-formats'.
+(defmacro* ibuffer-define-column (symbol (&key name extra-props) &rest body)
+  "Define a column SYMBOL for use with `ibuffer-formats'.
 
-;; BODY will be called with `buffer' bound to the buffer object, and
-;; `mark' bound to the current mark on the buffer.  The current buffer
-;; will be `buffer'.
+BODY will be called with `buffer' bound to the buffer object, and
+`mark' bound to the current mark on the buffer.  The current buffer
+will be `buffer'.
 
-;; If NAME is given, it will be used as a title for the column.
-;; Otherwise, the title will default to a capitalized version of the
-;; SYMBOL's name.
-;; EXTRA-PROPS is a plist of additional properties to add to the text,
-;; such as `mouse-face'.
+If NAME is given, it will be used as a title for the column.
+Otherwise, the title will default to a capitalized version of the
+SYMBOL's name.
+EXTRA-PROPS is a plist of additional properties to add to the text,
+such as `mouse-face'.
 
-;; Note that this macro expands into a `defun' for a function named
-;; ibuffer-make-column-NAME."
-;;   (let ((sym (intern (concat "ibuffer-make-column-"
-;; 			     (symbol-name symbol)))))
-;;     `(progn
-;;        (defun ,sym
-;; 	 (buffer mark)
-;; 	 ,(append `(ibuffer-propertize
-;; 		    (with-current-buffer buffer
-;; 		      ,@body))
-;; 		  `('ibuffer-field ',symbol)
-;; 		  extra-props))
-;;        (put (quote ,sym) 'ibuffer-column-name
-;; 		 (if (stringp ,name)
-;; 		     ,name
-;; 		   (capitalize (symbol-name (quote ,symbol))))))))
-;; ;; (put 'ibuffer-define-column 'lisp-indent-function 'defun)
+Note that this macro expands into a `defun' for a function named
+ibuffer-make-column-NAME."
+  (let ((sym (intern (concat "ibuffer-make-column-"
+			     (symbol-name symbol)))))
+    `(progn
+       (defun ,sym
+	 (buffer mark)
+	 ,(append `(ibuffer-propertize
+		    (with-current-buffer buffer
+		      ,@body))
+		  `('ibuffer-field ',symbol)
+		  extra-props))
+       (put (quote ,sym) 'ibuffer-column-name
+		 (if (stringp ,name)
+		     ,name
+		   (capitalize (symbol-name (quote ,symbol))))))))
+;; (put 'ibuffer-define-column 'lisp-indent-function 'defun)
 
-;; (ibuffer-define-column mark (:name " ")
-;;   (string mark))
+(ibuffer-define-column mark (:name " ")
+  (string mark))
 
-;; (ibuffer-define-column read-only (:name "R")
-;;   (if buffer-read-only
-;;       "%"
-;;     " "))
+(ibuffer-define-column read-only (:name "R")
+  (if buffer-read-only
+      "%"
+    " "))
 
-;; (ibuffer-define-column modified (:name "M")
-;;   (if (buffer-modified-p)
-;;       (string ibuffer-modified-char)
-;;     " "))
+(ibuffer-define-column modified (:name "M")
+  (if (buffer-modified-p)
+      (string ibuffer-modified-char)
+    " "))
 
-;; ;; Having to conditionalize this sucks.
-;; (if ibuffer-use-keymap-for-local-map
-;;     (ibuffer-define-column name (:extra-props
-;; 				 ('mouse-face 'highlight 'keymap ibuffer-name-map))
-;; 			   (buffer-name))
-;;   (ibuffer-define-column name (:extra-props
-;; 			       ('mouse-face 'highlight 'local-map ibuffer-name-map))
-;; 			 (buffer-name)))
+;; Having to conditionalize this sucks.
+(if ibuffer-use-keymap-for-local-map
+    (ibuffer-define-column name (:extra-props
+				 ('mouse-face 'highlight 'keymap ibuffer-name-map))
+			   (buffer-name))
+  (ibuffer-define-column name (:extra-props
+			       ('mouse-face 'highlight 'local-map ibuffer-name-map))
+			 (buffer-name)))
   
-;; (ibuffer-define-column size ()
-;;   (format "%s" (buffer-size)))
+(ibuffer-define-column size ()
+  (format "%s" (buffer-size)))
 
-;; (if ibuffer-use-keymap-for-local-map
-;;     (ibuffer-define-column mode (:extra-props
-;; 				 ('mouse-face 'highlight
-;; 					      'keymap ibuffer-mode-name-map))
-;; 			   (format "%s" mode-name))
-;;   (ibuffer-define-column mode (:extra-props
-;; 			       ('mouse-face 'highlight
-;; 					    'local-map
-;; 					    ibuffer-mode-name-map))
-;; 			 (format "%s" mode-name)))
+(if ibuffer-use-keymap-for-local-map
+    (ibuffer-define-column mode (:extra-props
+				 ('mouse-face 'highlight
+					      'keymap ibuffer-mode-name-map))
+			   (format "%s" mode-name))
+  (ibuffer-define-column mode (:extra-props
+			       ('mouse-face 'highlight
+					    'local-map
+					    ibuffer-mode-name-map))
+			 (format "%s" mode-name)))
 
-;; (ibuffer-define-column process ()
-;;   (let ((proc (get-buffer-process buffer)))
-;;     (format "%s" (if proc
-;; 		     (list proc (process-status proc))
-;; 		   "none"))))
+(ibuffer-define-column process ()
+  (let ((proc (get-buffer-process buffer)))
+    (format "%s" (if proc
+		     (list proc (process-status proc))
+		   "none"))))
 
-;; (ibuffer-define-column filename ()
-;;   (let ((directory-abbrev-alist ibuffer-directory-abbrev-alist))
-;;     (abbreviate-file-name
-;;      (or buffer-file-name
-;; 	 (and ibuffer-dired-filenames
-;; 	      dired-directory)
-;; 	 ""))))
+(ibuffer-define-column filename ()
+  (let ((directory-abbrev-alist ibuffer-directory-abbrev-alist))
+    (abbreviate-file-name
+     (or buffer-file-name
+	 (and ibuffer-dired-filenames
+	      dired-directory)
+	 ""))))
 
 ;; Reduce string consing.
 (defconst ibuffer-space-strings [""
@@ -2734,85 +2732,85 @@ become unmarked."
       (t (concat str left right)))))
 
 ;; This is a pretty bad hack.
-;; (defvar ibuffer-column-sizes nil
-;;   "A vector of the maximum length of a line in each column.
-;; For internal ibuffer use; do not modify.")
+(defvar ibuffer-column-sizes nil
+  "A vector of the maximum length of a line in each column.
+For internal ibuffer use; do not modify.")
 
-;; (defun ibuffer-insert-buffer-line (buffer mark format ellipsis)
-;;   "Insert a line describing BUFFER and MARK using FORMAT."
-;;   (assert (eq major-mode 'ibuffer-mode))
-;;   (let* ((beg (point))
-;; 	 (i 0))
-;;     ;; Actually evaluate the format.
-;;     (dolist (form format)
-;;       (insert
-;;        (if (stringp form)
-;; 	   form
-;; 	 (let ((sym (car form))
-;; 	       (min (cadr form))
-;; 	       (max (caddr form))
-;; 	       (align (cadddr form)))
-;; 	   (let* ((str (funcall sym buffer mark))
-;; 		  (from-end-p (when (minusp min)
-;; 				(setq min (- min))
-;; 				t))
-;; 		  (strlen (length str))
-;; 		  (val
-;; 		   (cond ((< strlen min)
-;;                           (ibuffer-format-column str
-;; 						 (- min strlen)
-;; 						 align))
-;; 			 ((and (> max 0)
-;; 			       (> strlen max))
-;; 			  (let* ((substr (if from-end-p
-;; 					     (substring str
-;; 							(- strlen max))
-;; 					   (substring str 0 max)))
-;; 				 (substrlen (length substr)))
-;; 			    (if (and ibuffer-elide-long-columns
-;; 				     (> substrlen 5))
-;; 				(if from-end-p
-;; 				    (concat ellipsis
-;; 					    (substring substr
-;; 						       (length ibuffer-eliding-string)))
-;; 				  (concat
-;; 				   (substring substr 0 (- substrlen (length ibuffer-eliding-string)))
-;; 				   ellipsis))
-;; 			      substr)))
-;; 			 (t
-;; 			  str)))
-;; 		  (len (length val))
-;; 		  (max (aref ibuffer-column-sizes i)))
-;; 	     (when (> len max)
-;; 	       (aset ibuffer-column-sizes i len))
-;; 	     (setq i (1+ i))
-;; 	     val)))))
-;;     (put-text-property beg (point) 'ibuffer-properties (list buffer mark))
-;;     ;; Replace with marking face, if applicable.
-;;     (when (not (null ibuffer-fontification-level))
-;;       (cond ((eq mark ibuffer-marked-char)
-;; 	     (ibuffer-propertize-field 'name
-;; 				       '(face ibuffer-marked-face)))
-;; 	    ((eq mark ibuffer-deletion-char)
-;; 	     (ibuffer-propertize-field 'name
-;; 				       '(face ibuffer-deletion-face)))
-;; 	    ;; If it's not marked, fontify according to
-;; 	    ;; `ibuffer-fontification-alist'.
-;; 	    ((eq ibuffer-fontification-level t)
-;; 	     (let ((level -1))
-;; 	       (dolist (e ibuffer-fontification-alist)
-;; 		 (when (and (> (car e) level)
-;; 			    (with-current-buffer buffer
-;; 			      (eval (cadr e))))
-;; 		   (setq level (car e))
-;; 		   (ibuffer-propertize-field 'name
-;; 					     (list 'face
-;; 						   (if (symbolp (caddr e))
-;; 						       (if (facep (caddr e))
-;; 							   (caddr e)
-;; 							 (symbol-value (caddr e))))))))))))
-;;     (insert "\n")
-;;     (goto-char beg)))
+(defun ibuffer-insert-buffer-line (buffer mark format ellipsis)
+  "Insert a line describing BUFFER and MARK using FORMAT."
+  (assert (eq major-mode 'ibuffer-mode))
+  (let* ((beg (point))
+	 (i 0))
+    ;; Actually evaluate the format.
+    (dolist (form format)
+      (insert
+       (if (stringp form)
+	   form
+	 (let ((sym (car form))
+	       (min (cadr form))
+	       (max (caddr form))
+	       (align (cadddr form)))
+	   (let* ((str (funcall sym buffer mark))
+		  (from-end-p (when (minusp min)
+				(setq min (- min))
+				t))
+		  (strlen (length str))
+		  (val
+		   (cond ((< strlen min)
+                          (ibuffer-format-column str
+						 (- min strlen)
+						 align))
+			 ((and (> max 0)
+			       (> strlen max))
+			  (let* ((substr (if from-end-p
+					     (substring str
+							(- strlen max))
+					   (substring str 0 max)))
+				 (substrlen (length substr)))
+			    (if (and ibuffer-elide-long-columns
+				     (> substrlen 5))
+				(if from-end-p
+				    (concat ellipsis
+					    (substring substr
+						       (length ibuffer-eliding-string)))
+				  (concat
+				   (substring substr 0 (- substrlen (length ibuffer-eliding-string)))
+				   ellipsis))
+			      substr)))
+			 (t
+			  str)))
+		  (len (length val))
+		  (max (aref ibuffer-column-sizes i)))
+	     (when (> len max)
+	       (aset ibuffer-column-sizes i len))
+	     (setq i (1+ i))
+	     val)))))
+    (put-text-property beg (point) 'ibuffer-properties (list buffer mark))
+    ;; Replace with marking face, if applicable.
+    (when (not (null ibuffer-fontification-level))
+      (cond ((eq mark ibuffer-marked-char)
+	     (ibuffer-propertize-field 'name
+				       '(face ibuffer-marked-face)))
+	    ((eq mark ibuffer-deletion-char)
+	     (ibuffer-propertize-field 'name
+				       '(face ibuffer-deletion-face)))
+	    ;; If it's not marked, fontify according to
+	    ;; `ibuffer-fontification-alist'.
+	    ((eq ibuffer-fontification-level t)
+	     (let ((level -1))
+	       (dolist (e ibuffer-fontification-alist)
+		 (when (and (> (car e) level)
+			    (with-current-buffer buffer
+			      (eval (cadr e))))
+		   (setq level (car e))
+		   (ibuffer-propertize-field 'name
+					     (list 'face
+						   (if (symbolp (caddr e))
+						       (if (facep (caddr e))
+							   (caddr e)
+							 (symbol-value (caddr e))))))))))))
+    (insert "\n")
+    (goto-char beg)))
 
 (defun ibuffer-redisplay-current ()
   (assert (eq major-mode 'ibuffer-mode))
