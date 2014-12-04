@@ -1,0 +1,14 @@
+cursor:hand;
+cursor:pointer;
+cursor:crosshair;
+cursor:text;
+cursor:wait;
+cursor:help;
+cursor:e-resize;
+cursor:ne-resize;
+cursor:n-resize;
+cursor:nw-resize;
+cursor:w-resize;
+cursor:sw-resize;
+cursor:s-resize;
+cursor:se-resize;
