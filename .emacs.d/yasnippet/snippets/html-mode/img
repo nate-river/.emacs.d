@@ -1,5 +1,6 @@
-# contributor: Jimmy Wu <frozenthrone88@gmail.com>
-# name: <img src="..." class="..." alt="..." />
-# key: img
-# --
-<img src="$1" class="$2" alt="$3" />
+<img src="$1" class="" alt="$2" title="$3" usemap="#$4"/>
+<!-- <map name="$4"> -->
+<!-- <area shape="rect" coords="" alt="" href="http://www.baidu.com"> -->
+<!-- <area shape="circle" coords="" alt="" href="http://www.jd.com"> -->
+<!-- <area shape="poly" coords="" alt="" href="http://www.xiaomi.com"> -->
+<!-- </map> -->

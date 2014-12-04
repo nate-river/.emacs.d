@@ -1,5 +1,4 @@
-# contributor: Jimmy Wu <frozenthrone88@gmail.com>
-# name: <hr />
-# key: hr
-# --
-<hr />
+<hr/>
+<!-- <hr size="9"/> -->
+<!-- <hr width="80%"/> -->
+<!-- <hr color="ff0000"/> -->
