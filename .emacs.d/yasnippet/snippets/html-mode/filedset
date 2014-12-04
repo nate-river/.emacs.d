@@ -1,0 +1,4 @@
+<!-- <fieldset> 标签将表单内容的一部分打包,生成一组相关表 单的字段。 -->
+<fieldset>
+    <legend>$1</legend>
+</fieldset>
