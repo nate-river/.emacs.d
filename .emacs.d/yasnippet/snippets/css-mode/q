@@ -1,7 +1,7 @@
-{
+$1{
   width:200px;
   height:200px;
-  border:1px solid red;
-  background-color:gray;
-  $1
+  border:1px solid #999;
+  background-color:#ccc;
+  $2
 }

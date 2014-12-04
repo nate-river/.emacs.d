@@ -1,0 +1,33 @@
+font-family:"";
+font-size:15px;
+
+color:"";
+
+font-weight:normal;
+font-weight:bold;
+
+font-style:normal;
+font-style:italic;
+
+text-decoration:none;
+text-decoration:underline;
+text-decoration:overline;
+text-decoration:line-through;
+
+font-variant: small-caps;
+font-variant: normal;
+
+text-align:left;
+
+vertical-align:super;
+vertical-align:sup;
+vertical-align:top;
+vertical-align:middle;
+vertical-align:bottom;
+
+line-height:20px;
+text-indent:2em;
+
+white-space:nowrap;
+word-wrap:break-word;
+word-break:normal;

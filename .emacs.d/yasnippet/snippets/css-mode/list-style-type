@@ -1,0 +1,10 @@
+list-style-type:none;
+list-style-type:disc;
+list-style-type:circle;
+list-style-type:decimal;
+list-style-type:lower-roman;
+list-style-type:upper-roman;
+list-style-type:lower-alpha;
+list-style-type:upper-alpha;
+
+list-style-image:url();
