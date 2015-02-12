@@ -1,0 +1,8 @@
+<dl class="$1">
+    <dt>$2</dt>
+    <dd>$3</dd>
+    <dd>$4</dd>
+    <dd>$5</dd>
+    <dd>$6</dd>
+    <dd>$7</dd>
+</dl>

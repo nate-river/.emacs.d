@@ -1,0 +1,29 @@
+$(window).scroll(function(){
+	if($(window).scrollTop() > 300){
+		$('.to-top').show();
+
+		clearTimeout(window.t);
+		window.t = setTimeout(function(){
+		    $('.to-top').animate({bottom:120},100,function(){
+				$('.to-top').animate({bottom:102},100);
+			});
+		},200);
+
+	}else{
+		$('.to-top').hide();
+	};
+});
+
+
+$(".to-top").click(function(){
+	$({top: $(window).scrollTop()}).animate(
+		{top: 0},
+        {
+            duration: 700,
+			step: function() {
+                console.log(this.top);
+				$(window).scrollTop(this.top);
+			}
+		}
+    );
+});

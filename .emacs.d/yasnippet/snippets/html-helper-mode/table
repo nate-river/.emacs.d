@@ -1,0 +1,32 @@
+<!-- <table class="$1"> -->
+<table class="$1" width="1000" height="1000" bordercolor="#999" bgcolor="#ccc"
+       border="1" cellspacing="" cellpadding="" align="left" >
+    <thead></thead>
+    <tbody>
+        <tr width="" height="" bordercolor="" border="" align="" valign="">
+            <td colspan="" rowspan="" ></td>
+            <td colspan="" rowspan="" ></td>
+            <td colspan="" rowspan="" ></td>
+            <td colspan="" rowspan="" ></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+    <tfoot></tfoot>
+</table>

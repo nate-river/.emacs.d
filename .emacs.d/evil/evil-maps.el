@@ -31,8 +31,8 @@
 
 (define-key evil-normal-state-map "a" 'evil-append)
 (define-key evil-normal-state-map "A" 'evil-append-line)
-(define-key evil-normal-state-map "c" 'evil-change)
-(define-key evil-normal-state-map "C" 'evil-change-line)
+;; (define-key evil-normal-state-map "c" 'evil-change)
+;; (define-key evil-normal-state-map "C" 'evil-change-line)
 (define-key evil-normal-state-map "d" 'evil-delete)
 (define-key evil-normal-state-map "D" 'evil-delete-line)
 (define-key evil-normal-state-map "i" 'evil-insert)
@@ -56,6 +56,8 @@
 ;; (define-key evil-normal-state-map "s" 'evil-substitute)
 (define-key evil-normal-state-map "s" 'save-buffer)
 (define-key evil-normal-state-map "L" 'ibuffer)
+(define-key evil-normal-state-map "c" 'query-replace)
+
 
 (define-key evil-normal-state-map "S" 'evil-change-whole-line)
 (define-key evil-normal-state-map "x" 'evil-delete-char)
@@ -80,8 +82,17 @@
 (define-key evil-normal-state-map "za" 'evil-toggle-fold)
 (define-key evil-normal-state-map "zr" 'evil-open-folds)
 (define-key evil-normal-state-map "zm" 'evil-close-folds)
-(define-key evil-normal-state-map "\C-n" 'evil-paste-pop-next)
-(define-key evil-normal-state-map "\C-p" 'evil-paste-pop)
+
+;; (define-key evil-normal-state-map "\C-n" 'evil-paste-pop-next)
+;; (define-key evil-normal-state-map "\C-p" 'evil-paste-pop)
+
+(define-key evil-normal-state-map "\C-n" 'evil-next-line)
+(define-key evil-normal-state-map "\C-p" 'evil-previous-line)
+
+(define-key evil-normal-state-map "\C-j" 'evil-next-line)
+(define-key evil-normal-state-map "\C-k" 'evil-previous-line)
+(define-key evil-normal-state-map "\C-e" 'evil-end-of-line)
+
 (define-key evil-normal-state-map "\C-t" 'pop-tag-mark)
 (define-key evil-normal-state-map (kbd "C-.") 'evil-repeat-pop)
 (define-key evil-normal-state-map (kbd "M-.") 'evil-repeat-pop-next)
@@ -191,11 +202,16 @@
 (define-key evil-motion-state-map "f" 'evil-find-char)
 (define-key evil-motion-state-map "F" 'evil-find-char-backward)
 (define-key evil-motion-state-map "G" 'evil-goto-line)
+
 (define-key evil-motion-state-map "h" 'evil-backward-char)
+(define-key evil-motion-state-map "\C-h" 'evil-backward-char)
+
 (define-key evil-motion-state-map "H" 'evil-window-top)
 (define-key evil-motion-state-map "j" 'evil-next-line)
 (define-key evil-motion-state-map "k" 'evil-previous-line)
+
 (define-key evil-motion-state-map "l" 'evil-forward-char)
+
 (define-key evil-motion-state-map " " 'evil-forward-char)
 (define-key evil-motion-state-map "K" 'evil-lookup)
 (define-key evil-motion-state-map "L" 'evil-window-bottom)
@@ -235,15 +251,19 @@
 (define-key evil-motion-state-map "g^" 'evil-first-non-blank-of-visual-line)
 (define-key evil-motion-state-map "g$" 'evil-end-of-visual-line)
 (define-key evil-motion-state-map "g\C-]" 'find-tag)
-(define-key evil-motion-state-map "{" 'evil-backward-paragraph)
-(define-key evil-motion-state-map "}" 'evil-forward-paragraph)
+
+;; (define-key evil-motion-state-map "{" 'evil-backward-paragraph)
+;; (define-key evil-motion-state-map "}" 'evil-forward-paragraph)
+
 (define-key evil-motion-state-map "#" 'evil-search-symbol-backward)
 (define-key evil-motion-state-map "$" 'evil-end-of-line)
 (define-key evil-motion-state-map "%" 'evil-jump-item)
 (define-key evil-motion-state-map "`" 'evil-goto-mark)
 (define-key evil-motion-state-map "'" 'evil-goto-mark-line)
-(define-key evil-motion-state-map "(" 'evil-backward-sentence)
-(define-key evil-motion-state-map ")" 'evil-forward-sentence)
+
+;; (define-key evil-motion-state-map "(" 'evil-backward-sentence)
+;; (define-key evil-motion-state-map ")" 'evil-forward-sentence)
+
 (define-key evil-motion-state-map "]]" 'evil-forward-section-begin)
 (define-key evil-motion-state-map "][" 'evil-forward-section-end)
 (define-key evil-motion-state-map "[[" 'evil-backward-section-begin)
@@ -366,11 +386,13 @@
 ;; (define-key evil-operator-state-map [escape] 'keyboard-quit)
 
 ;;; Insert state
-(define-key evil-insert-state-map "\C-k" 'evil-insert-digraph)
+
+
 (define-key evil-insert-state-map "\C-o" 'evil-execute-in-normal-state)
 (define-key evil-insert-state-map "\C-r" 'evil-paste-from-register)
 (define-key evil-insert-state-map "\C-y" 'evil-copy-from-above)
-(define-key evil-insert-state-map "\C-e" 'evil-copy-from-below)
+
+;; (define-key evil-insert-state-map "\C-e" 'evil-copy-from-below)
 ;; (define-key evil-insert-state-map "\C-n" 'evil-complete-next)
 ;; (define-key evil-insert-state-map "\C-p" 'evil-complete-previous)
 (define-key evil-insert-state-map "\C-x\C-n" 'evil-complete-next-line)
@@ -381,6 +403,10 @@
 (define-key evil-insert-state-map [escape] 'evil-normal-state)
 ;; (define-key evil-insert-state-map [tab] 'evil-normal-state)
 (define-key evil-insert-state-map "\C-j" 'evil-normal-state)
+(define-key evil-insert-state-map "\C-k" 'evil-normal-state)
+(define-key evil-insert-state-map "\C-h" 'evil-normal-state)
+(define-key evil-insert-state-map "\C-l" 'evil-normal-state)
+(define-key evil-insert-state-map "\C-e" 'evil-end-of-line)
 
 (define-key evil-insert-state-map
   (read-kbd-macro evil-toggle-key) 'evil-emacs-state)

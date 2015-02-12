@@ -127,7 +127,7 @@
        "W" 'tabbar-backward-tab                
        ;; [(\/)] (lambda () (interactive) (dired "/"))
        [(\~)] (lambda () (interactive) (dired "~/"))
-       "q" (lambda () (interactive) (dired "~/Documents/jy/"))
+       "q" (lambda () (interactive) (dired "~/Documents/"))
        [(tab)] 'dired-up-directory
 
        ;; "r" 'dired-do-redisplay                ; "l"

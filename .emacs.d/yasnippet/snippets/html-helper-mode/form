@@ -1,0 +1,23 @@
+<!--$1form开始-->
+<form action="$2" method="post" name="$3" id="$4">
+    <!-- <form action="$2" method="get" name="$2" id="$3"> -->
+    <input type="text"/>
+    <input type="password"/>
+    <input type="radio"/>
+    <input type="checkbox"/> 
+    <input type="hidden"/>
+    <textarea class="" cols="" rows=""></textarea> 
+     
+    <select name="" size="" multiple>
+        <option selected>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select> 
+    <input type="submit"/>
+    <input type="file"/>
+    <input type="reset" value=""/>
+    <input type="button" value=""/>
+</form>
+<!--$1form结束-->

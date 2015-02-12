@@ -1,15 +1,12 @@
 ;; (require 'psvn)
-
 ;;hideshow
 ;; (load-library "hideshow")
-
 ;; (defun toggle-selective-display (column)
 ;;   (interactive "P")
 ;;   (set-selective-display
 ;;    (or column
 ;;        (unless selective-display
 ;;          (1+ (current-column))))))
-
 ;; (defun toggle-hiding (column)
 ;;   (interactive "P")
 ;;   (if hs-minor-mode
@@ -18,7 +15,6 @@
 ;;             (error t))
 ;;           (hs-show-all))
 ;;     (toggle-selective-display column)))
-
 ;; (add-hook 'c-mode-common-hook   'hs-minor-mode)
 ;; (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 ;; (add-hook 'java-mode-hook       'hs-minor-mode)
@@ -27,7 +23,6 @@
 ;; (add-hook 'sh-mode-hook         'hs-minor-mode)
 ;; (add-hook 'php-mode-hook        'hs-minor-mode)
 ;; (add-hook 'js-mode-hook         'hs-minor-mode)
-
 ;; (setq-default mode-line-format nil)
 ;;make emacs can open image
 ;; (auto-image-file-mode)
@@ -35,7 +30,6 @@
 ;; (global-set-key [(f2)] 'toggle-selective-display)
 ;; (tabbar-mode nil)
 ;; (osx-key-mode nil)
-
 ;; (add-hook 'c-mode-common-hook   'evil-local-mode)
 ;; (add-hook 'emacs-lisp-mode-hook 'evil-local-mode)
 ;; (add-hook 'java-mode-hook       'evil-local-mode)
@@ -49,20 +43,16 @@
 ;; (add-hook 'dired-mode-hook        'evil-local-mode)
 ;; (add-hook 'ibuffer-mode-hooks        'evil-local-mode)
 ;; (add-hook 'fundamental-mode        'evil-local-mode)
-
-
 ;; (defun my-html-mode-hooks ()
 ;;   "Set ups for how I like html mode."
 ;;   ;; (hs-minor-mode 1)
 ;;   (html-mode 1)
 ;;   )
-
 ;; (add-hook 'html-mode-hook 'my-html-mode-hooks)
 ;; auto-load php-mode
-
-(add-to-list
- 'auto-mode-alist
- '("\\.html\\'" . html-mode))
+;; (add-to-list
+;;  'auto-mode-alist
+;;  '("\\.html\\'" . html-mode))
 
 
 (add-to-list 'load-path "~/.emacs.d/el")
@@ -71,25 +61,22 @@
 (require 'auto-indent-mode)
 (require 'php-mode)
 
-;; (require 'js2-mode)
-;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
 
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d//ac-dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
 (require 'ibuffer)
 (require 'dired-isearch)
 (require 'find-file-in-project)
-(set-default-font "Monaco 14")
+(set-default-font "monaco 16")
 
 (setq inhibit-startup-message t)
 (tool-bar-mode t)
-;; (setq frame-title-format "")
+(setq frame-title-format "")
 
 (setq locale-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
@@ -106,7 +93,7 @@
 (scroll-bar-mode )
 
 (column-number-mode t)
-(global-linum-mode 1);
+(global-linum-mode 1)
 
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)
@@ -116,11 +103,9 @@
 
 (setq backup-inhibited t)
 (setq auto-save-default nil)
-
 (setq scroll-step 1
       scroll-margin 6
       scroll-conservatively 10000)
-
 ;;auto complete
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev
@@ -133,7 +118,7 @@
         try-expand-list
         try-expand-line
         try-complete-lisp-symbol-partially
-        try-complete-lisp-symbol))
+        try-complete-lisp-symbol)) 
 
 ;;key bindings
 (setq mac-command-modifier 'control)
@@ -149,7 +134,7 @@
 (global-set-key [(control l)] '(lambda () (interactive) (dired ".")))
 
 (global-set-key [(control s)] 'save-buffer)
-(global-set-key [(control w)] 'kill-buffer)
+(global-set-key [(control q)] 'kill-buffer)
 (global-set-key [(control r)] 'isearch-forward-regexp)
 
 ;; (setq ffip-project-root-function '~/Documents/green)
@@ -199,21 +184,27 @@
 (global-set-key "\M-;" 'qiang-comment-dwim-line)
 
 (eval-after-load 'dired '(progn (require 'joseph-single-dired)))
-(kill-buffer "*scratch*")
 (put 'narrow-to-page 'disabled nil)
 
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-mac-classic)
-(color-theme-vim-colors)
+;; (color-theme-mac-classic)
+;; (color-theme-vim-colors)
 ;; (color-theme-molokai)
-;; (color-theme-blackboard)
+(color-theme-blackboard)
 ;; (color-theme-all-hallows-eve)
-
-(load "desktop")
-(desktop-load-default)
-(desktop-read)
+;; (color-theme-andreas)
+;; (color-theme-bharadwaj)
+;; (color-theme-resolve)
+;; (color-theme-snow)
+;; (load "desktop")
+;; (desktop-load-default)
+;; (desktop-read)
 
 (add-to-list 'load-path  "~/.emacs.d/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
+
+(add-to-list 'magic-mode-alist 
+    '("\\(?:<\\?xml\\s +[^>]*>\\)?\\s *<\\(?:!--\\(?:[^-]\\|-[^-]\\)*-->\\s *<\\)*\\(?:!DOCTYPE\\s +[^>]*>\\s *<\\s *\\(?:!--\\(?:[^-]\\|-[^-]\\)*-->\\s *\<\\)*\\)?[Hh][Tt][Mm][Ll]"
+        . html-mode))

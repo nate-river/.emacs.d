@@ -1,0 +1,9 @@
+<frameset cols="25%,50%,25%" rows=1>
+    <frame src="http://www.baidu.com" name="" scrolling="true" />
+    <frame src="http://www.jd.com"  name="" scrolling="true"/>
+    <frame src="http://www.xiaomi.com" name="" scrolling="true"/>
+</frameset>
+<noframes>您的浏览器不支持frame</noframes>
+
+<!-- frameset 和body不能共存,但是iframe可以 -->
+<iframe></iframe>

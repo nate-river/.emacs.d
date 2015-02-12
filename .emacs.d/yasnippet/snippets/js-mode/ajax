@@ -5,7 +5,6 @@ $.ajax(
     type:'post',
     data:post_data,
     success:function(data){
-        console.log(data);
         $3;
     }
 );
