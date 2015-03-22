@@ -72,7 +72,7 @@
 (require 'ibuffer)
 (require 'dired-isearch)
 (require 'find-file-in-project)
-;;(set-default-font "monaco 16")
+(set-default-font "consolas 15")
 
 (setq inhibit-startup-message t)
 (tool-bar-mode t)
