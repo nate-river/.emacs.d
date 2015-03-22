@@ -72,7 +72,7 @@
 (require 'ibuffer)
 (require 'dired-isearch)
 (require 'find-file-in-project)
-(set-default-font "monaco 16")
+;;(set-default-font "monaco 16")
 
 (setq inhibit-startup-message t)
 (tool-bar-mode t)
@@ -121,7 +121,7 @@
         try-complete-lisp-symbol)) 
 
 ;;key bindings
-(setq mac-command-modifier 'control)
+;;(setq mac-command-modifier 'control)
 (global-set-key [(control ?/)] 'hippie-expand)
 
 (global-set-key [(f1)] 'ibuffer)
@@ -141,31 +141,31 @@
 ;; (require 'ido)
 ;; (ido-mode t)
 
-(require 'session)
-(add-hook 'after-init-hook 'session-initialize)
+;;(require 'session)
+;;(add-hook 'after-init-hook 'session-initialize)
 
-(require 'browse-kill-ring)
-(global-set-key [(control x)(k)] 'browse-kill-ring)
-(browse-kill-ring-default-keybindings)
+;;(require 'browse-kill-ring)
+;;(global-set-key [(control x)(k)] 'browse-kill-ring)
+;;(browse-kill-ring-default-keybindings)
 
-(require 'recentf)
-(recentf-mode 1)
+;;(require 'recentf)
+;;(recentf-mode 1)
 
-(defun recentf-open-files-compl ()
-  (interactive)
-  (let* ((all-files recentf-list)
-         (tocpl (mapcar (function
-                         (lambda (x) (cons (file-name-nondirectory x) x))) all-files))
-         (prompt (append '("File name: ") tocpl))
-         (fname (completing-read (car prompt) (cdr prompt) nil nil)))
-    (find-file (cdr (assoc-ignore-representation fname tocpl)))))
+;;(defun recentf-open-files-compl ()
+;; (interactive)
+;;  (let* ((all-files recentf-list)
+;;         (tocpl (mapcar (function
+;;                         (lambda (x) (cons (file-name-nondirectory x) x))) all-files))
+;;         (prompt (append '("File name: ") tocpl))
+;;         (fname (completing-read (car prompt) (cdr prompt) nil nil)))
+;;    (find-file (cdr (assoc-ignore-representation fname tocpl)))))
 
-(global-set-key [(control x)(f)] 'recentf-open-files-compl)
+;;(global-set-key [(control x)(f)] 'recentf-open-files-compl)
 
 ;; (autoload 'mmm-mode "mmm-mode" "Multiple Major Modes" t)
 ;; (autoload 'mmm-parse-buffer "mmm-mode" "Automatic MMM-ification" t)
 
-(setq x-select-enable-clipboard t)
+;;(setq x-select-enable-clipboard t)
 
 (require 'textmate)
 (tm/initialize)
@@ -186,12 +186,12 @@
 (eval-after-load 'dired '(progn (require 'joseph-single-dired)))
 (put 'narrow-to-page 'disabled nil)
 
-(require 'color-theme)
-(color-theme-initialize)
+;;(require 'color-theme)
+;;(color-theme-initialize)
 ;; (color-theme-mac-classic)
 ;; (color-theme-vim-colors)
 ;; (color-theme-molokai)
-(color-theme-blackboard)
+;;(color-theme-blackboard)
 ;; (color-theme-all-hallows-eve)
 ;; (color-theme-andreas)
 ;; (color-theme-bharadwaj)
