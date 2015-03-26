@@ -186,11 +186,11 @@
 (eval-after-load 'dired '(progn (require 'joseph-single-dired)))
 (put 'narrow-to-page 'disabled nil)
 
-;;(require 'color-theme)
-;;(color-theme-initialize)
+(require 'color-theme)
+(color-theme-initialize)
 ;; (color-theme-mac-classic)
 ;; (color-theme-vim-colors)
-;; (color-theme-molokai)
+(color-theme-molokai)
 ;;(color-theme-blackboard)
 ;; (color-theme-all-hallows-eve)
 ;; (color-theme-andreas)
@@ -208,13 +208,13 @@
 (add-to-list 'magic-mode-alist 
     '("\\(?:<\\?xml\\s +[^>]*>\\)?\\s *<\\(?:!--\\(?:[^-]\\|-[^-]\\)*-->\\s *<\\)*\\(?:!DOCTYPE\\s +[^>]*>\\s *<\\s *\\(?:!--\\(?:[^-]\\|-[^-]\\)*-->\\s *\<\\)*\\)?[Hh][Tt][Mm][Ll]"
         . html-mode))
-(tabbar-mode t)
-(setq tabbar-buffer-groups-function
-    (lambda (b) (list "All Buffers")))
-(setq tabbar-buffer-list-function
-    (lambda ()
-        (remove-if
-          (lambda(buffer)
-             (find (aref (buffer-name buffer) 0) " *"))
-          (buffer-list))))
+;;(tabbar-mode t)
+;;(setq tabbar-buffer-groups-function
+;;    (lambda (b) (list "All Buffers")))
+;;(setq tabbar-buffer-list-function
+;;    (lambda ()
+;;        (remove-if
+;;          (lambda(buffer)
+;;             (find (aref (buffer-name buffer) 0) " *"))
+;;          (buffer-list))))
 
