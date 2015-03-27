@@ -1,0 +1,16 @@
+.da{
+  width:800px;
+  height:418px;
+  padding:100px;
+  border:3px solid #62a428;
+  background-color:#f4f4f4;
+  margin:0 auto;
+  border-radius:8px;
+}
+.xiao{
+  width:100px;
+  height:100px;
+  border: 1px solid #999;
+  margin:5px;
+  /* float:left; */
+}

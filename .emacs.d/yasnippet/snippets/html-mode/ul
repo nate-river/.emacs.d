@@ -1,8 +1,5 @@
-<ul class="$1" id="$2">
+<ul class="$1">
     <li>
-
-    </li>
-    <li>
-
+    $0
     </li>
 </ul>

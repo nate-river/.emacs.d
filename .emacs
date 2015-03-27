@@ -50,13 +50,22 @@
 ;;   )
 ;; (add-hook 'html-mode-hook 'my-html-mode-hooks)
 ;; auto-load php-mode
-;; (add-to-list
-;;  'auto-mode-alist
-;;  '("\\.html\\'" . html-mode))
+
+;;(tabbar-mode t)
+;;(setq tabbar-buffer-groups-function
+;;    (lambda (b) (list "All Buffers")))
+;;(setq tabbar-buffer-list-function
+;;    (lambda ()
+;;        (remove-if
+;;          (lambda(buffer)
+;;             (find (aref (buffer-name buffer) 0) " *"))
+;;          (buffer-list))))
+
 
 
 (add-to-list 'load-path "~/.emacs.d/el")
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/themes")
 
 (require 'auto-indent-mode)
 (require 'php-mode)
@@ -72,7 +81,7 @@
 (require 'ibuffer)
 (require 'dired-isearch)
 (require 'find-file-in-project)
-(set-default-font "consolas 15")
+(set-default-font "Courier new 15")
 
 (setq inhibit-startup-message t)
 (tool-bar-mode t)
@@ -106,6 +115,7 @@
 (setq scroll-step 1
       scroll-margin 6
       scroll-conservatively 10000)
+
 ;;auto complete
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev
@@ -121,7 +131,7 @@
         try-complete-lisp-symbol)) 
 
 ;;key bindings
-;;(setq mac-command-modifier 'control)
+(setq mac-command-modifier 'control)
 (global-set-key [(control ?/)] 'hippie-expand)
 
 (global-set-key [(f1)] 'ibuffer)
@@ -132,7 +142,6 @@
 (global-set-key [(f10)] 'clipboard-yank)
 (global-set-key [(f11)] 'clipboard-kill-region)
 (global-set-key [(control l)] '(lambda () (interactive) (dired ".")))
-
 (global-set-key [(control s)] 'save-buffer)
 (global-set-key [(control q)] 'kill-buffer)
 (global-set-key [(control r)] 'isearch-forward-regexp)
@@ -165,8 +174,8 @@
 ;; (autoload 'mmm-mode "mmm-mode" "Multiple Major Modes" t)
 ;; (autoload 'mmm-parse-buffer "mmm-mode" "Automatic MMM-ification" t)
 
-;;(setq x-select-enable-clipboard t)
 
+;;(setq x-select-enable-clipboard t)
 (require 'textmate)
 (tm/initialize)
 
@@ -208,13 +217,8 @@
 (add-to-list 'magic-mode-alist 
     '("\\(?:<\\?xml\\s +[^>]*>\\)?\\s *<\\(?:!--\\(?:[^-]\\|-[^-]\\)*-->\\s *<\\)*\\(?:!DOCTYPE\\s +[^>]*>\\s *<\\s *\\(?:!--\\(?:[^-]\\|-[^-]\\)*-->\\s *\<\\)*\\)?[Hh][Tt][Mm][Ll]"
         . html-mode))
-;;(tabbar-mode t)
-;;(setq tabbar-buffer-groups-function
-;;    (lambda (b) (list "All Buffers")))
-;;(setq tabbar-buffer-list-function
-;;    (lambda ()
-;;        (remove-if
-;;          (lambda(buffer)
-;;             (find (aref (buffer-name buffer) 0) " *"))
-;;          (buffer-list))))
+(add-to-list
+ 'auto-mode-alist
+ '("\\.html\\'" . html-mode))
+
 
