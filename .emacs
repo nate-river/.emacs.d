@@ -54,26 +54,54 @@
 ;;(tabbar-mode t)
 ;;(setq tabbar-buffer-groups-function
 ;;    (lambda (b) (list "All Buffers")))
-;;(setq tabbar-buffer-list-function
+;; (setq tabbar-buffer-list-function
 ;;    (lambda ()
 ;;        (remove-if
 ;;          (lambda(buffer)
 ;;             (find (aref (buffer-name buffer) 0) " *"))
 ;;          (buffer-list))))
+;;(require 'recentf)
+;;(recentf-mode 1)
+;;(defun recentf-open-files-compl ()
+;; (interactive)
+;;  (let* ((all-files recentf-list)
+;;         (tocpl (mapcar (function
+;;                         (lambda (x) (cons (file-name-nondirectory x) x))) all-files))
+;;         (prompt (append '("File name: ") tocpl))
+;;         (fname (completing-read (car prompt) (cdr prompt) nil nil)))
+;;    (find-file (cdr (assoc-ignore-representation fname tocpl)))))
 
+;;(global-set-key [(control x)(f)] 'recentf-open-files-compl)
+;; (autoload 'mmm-mode "mmm-mode" "Multiple Major Modes" t)
+;; (autoload 'mmm-parse-buffer "mmm-mode" "Automatic MMM-ification" t)
+;;key bindings
+
+;; (setq ffip-project-root-function '~/Documents/green)
+;; (require 'ido)
+;; (ido-mode t)
+;;(require 'session)
+;;(add-hook 'after-init-hook 'session-initialize)
 
 
 (add-to-list 'load-path "~/.emacs.d/el")
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/themes")
+(add-to-list 'load-path "~/.emacs.d/evil")
+(add-to-list 'load-path  "~/.emacs.d/yasnippet")
+(add-to-list 'magic-mode-alist 
+    '("\\(?:<\\?xml\\s +[^>]*>\\)?\\s *<\\(?:!--\\(?:[^-]\\|-[^-]\\)*-->\\s *<\\)*\\(?:!DOCTYPE\\s +[^>]*>\\s *<\\s *\\(?:!--\\(?:[^-]\\|-[^-]\\)*-->\\s *\<\\)*\\)?[Hh][Tt][Mm][Ll]"
+        . html-mode))
+(add-to-list
+ 'auto-mode-alist
+ '("\\.html\\'" . html-mode))
+
+(require 'evil)
+(evil-mode 1)
+(require 'yasnippet)
+(yas-global-mode 1)
 
 (require 'auto-indent-mode)
 (require 'php-mode)
-
-(add-to-list 'load-path "~/.emacs.d/evil")
-(require 'evil)
-(evil-mode 1)
-
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
@@ -81,7 +109,6 @@
 (require 'ibuffer)
 (require 'dired-isearch)
 (require 'find-file-in-project)
-(set-default-font "Courier new 15")
 
 (setq inhibit-startup-message t)
 (tool-bar-mode t)
@@ -97,9 +124,8 @@
 (setq default-tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq sgml-basic-offset 4)
-
 (global-font-lock-mode t)
-(scroll-bar-mode )
+;; (scroll-bar-mode )
 
 (column-number-mode t)
 (global-linum-mode 1)
@@ -130,10 +156,30 @@
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol)) 
 
-;;key bindings
+(require 'browse-kill-ring)
+(global-set-key [(control x)(k)] 'browse-kill-ring)
+(browse-kill-ring-default-keybindings)
+
+(setq x-select-enable-clipboard t)
+(require 'textmate)
+(tm/initialize)
+;;不让evil-mode污染光标颜色
+(setq evil-default-cursor nil)
+;; (set-background-color "black")
+(defun qiang-comment-dwim-line (&optional arg)
+  (interactive "*P")
+  (comment-normalize-vars)
+  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    (comment-dwim arg)))
+(global-set-key "\M-;" 'qiang-comment-dwim-line)
+
+(eval-after-load 'dired '(progn (require 'joseph-single-dired)))
+(put 'narrow-to-page 'disabled nil)
+
+
 (setq mac-command-modifier 'control)
 (global-set-key [(control ?/)] 'hippie-expand)
-
 (global-set-key [(f1)] 'ibuffer)
 (global-set-key [(f2)] 'evil-local-mode)
 (global-set-key [(f3)] 'rgrep)
@@ -146,79 +192,19 @@
 (global-set-key [(control q)] 'kill-buffer)
 (global-set-key [(control r)] 'isearch-forward-regexp)
 
-;; (setq ffip-project-root-function '~/Documents/green)
-;; (require 'ido)
-;; (ido-mode t)
 
-;;(require 'session)
-;;(add-hook 'after-init-hook 'session-initialize)
-
-;;(require 'browse-kill-ring)
-;;(global-set-key [(control x)(k)] 'browse-kill-ring)
-;;(browse-kill-ring-default-keybindings)
-
-;;(require 'recentf)
-;;(recentf-mode 1)
-
-;;(defun recentf-open-files-compl ()
-;; (interactive)
-;;  (let* ((all-files recentf-list)
-;;         (tocpl (mapcar (function
-;;                         (lambda (x) (cons (file-name-nondirectory x) x))) all-files))
-;;         (prompt (append '("File name: ") tocpl))
-;;         (fname (completing-read (car prompt) (cdr prompt) nil nil)))
-;;    (find-file (cdr (assoc-ignore-representation fname tocpl)))))
-
-;;(global-set-key [(control x)(f)] 'recentf-open-files-compl)
-
-;; (autoload 'mmm-mode "mmm-mode" "Multiple Major Modes" t)
-;; (autoload 'mmm-parse-buffer "mmm-mode" "Automatic MMM-ification" t)
-
-
-;;(setq x-select-enable-clipboard t)
-(require 'textmate)
-(tm/initialize)
-
-;;不让evil-mode污染光标颜色
-(setq evil-default-cursor nil)
-;; (set-background-color "black")
-
-
-(defun qiang-comment-dwim-line (&optional arg)
-  (interactive "*P")
-  (comment-normalize-vars)
-  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
-      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
-    (comment-dwim arg)))
-(global-set-key "\M-;" 'qiang-comment-dwim-line)
-
-(eval-after-load 'dired '(progn (require 'joseph-single-dired)))
-(put 'narrow-to-page 'disabled nil)
-
+(set-default-font "Monaco 15")
 (require 'color-theme)
 (color-theme-initialize)
+;; (color-theme-snow)
+(color-theme-monokai)
 ;; (color-theme-mac-classic)
 ;; (color-theme-vim-colors)
-(color-theme-molokai)
-;;(color-theme-blackboard)
+;; (color-theme-blackboard)
 ;; (color-theme-all-hallows-eve)
 ;; (color-theme-andreas)
 ;; (color-theme-bharadwaj)
 ;; (color-theme-resolve)
-;; (color-theme-snow)
 ;; (load "desktop")
 ;; (desktop-load-default)
 ;; (desktop-read)
-
-(add-to-list 'load-path  "~/.emacs.d/yasnippet")
-(require 'yasnippet)
-(yas-global-mode 1)
-
-(add-to-list 'magic-mode-alist 
-    '("\\(?:<\\?xml\\s +[^>]*>\\)?\\s *<\\(?:!--\\(?:[^-]\\|-[^-]\\)*-->\\s *<\\)*\\(?:!DOCTYPE\\s +[^>]*>\\s *<\\s *\\(?:!--\\(?:[^-]\\|-[^-]\\)*-->\\s *\<\\)*\\)?[Hh][Tt][Mm][Ll]"
-        . html-mode))
-(add-to-list
- 'auto-mode-alist
- '("\\.html\\'" . html-mode))
-
-
