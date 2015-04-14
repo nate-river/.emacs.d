@@ -193,12 +193,12 @@
 (global-set-key [(control r)] 'isearch-forward-regexp)
 
 
-(set-default-font "Monaco 15")
+(set-default-font "Monaco 13")
 (require 'color-theme)
 (color-theme-initialize)
 ;; (color-theme-snow)
-(color-theme-monokai)
-;; (color-theme-mac-classic)
+;; (color-theme-monokai)
+(color-theme-mac-classic)
 ;; (color-theme-vim-colors)
 ;; (color-theme-blackboard)
 ;; (color-theme-all-hallows-eve)

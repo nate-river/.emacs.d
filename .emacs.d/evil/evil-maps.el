@@ -56,7 +56,7 @@
 ;; (define-key evil-normal-state-map "s" 'evil-substitute)
 (define-key evil-normal-state-map "s" 'save-buffer)
 (define-key evil-normal-state-map "L" 'ibuffer)
-(define-key evil-normal-state-map "c" 'query-replace)
+(define-key evil-normal-state-map "c" 'query-replace-regexp)
 
 
 (define-key evil-normal-state-map "S" 'evil-change-whole-line)
