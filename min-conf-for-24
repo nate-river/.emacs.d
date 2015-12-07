@@ -5,7 +5,10 @@
 ;; (package-install 'evil)
 ;; (package-install 'smex)
 
+;; Use smex to handle M-x
+(setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
 (global-set-key [remap execute-extended-command] 'smex)
+
 (evil-mode t)
 (ido-mode t)
 (ido-everywhere t)
@@ -100,6 +103,7 @@
 (global-set-key "\M-l" '(lambda () (interactive) (dired ".")))
 (global-set-key "C-l" '(lambda () (interactive) (dired ".")))
 
+(set-default-font " 14")
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
             charset
