@@ -34,12 +34,19 @@
         try-expand-line
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
+        
+(defun indent-buffer ()
+  "Indent the whole buffer."
+  (interactive)
+  (save-excursion
+    (indent-region (point-min) (point-max) nil)))
 
 
 (define-key evil-normal-state-map "q" 'qiang-comment-dwim-line)
 (define-key evil-normal-state-map "s" 'save-buffer)
 (define-key evil-normal-state-map "c" 'query-replace-regexp)
 (define-key evil-normal-state-map "b" 'switch-to-buffer)
+(define-key evil-normal-state-map "=" 'indent-buffer)
 
 (define-key evil-normal-state-map "\C-n" 'evil-next-line)
 (define-key evil-normal-state-map "\C-p" 'evil-previous-line)
