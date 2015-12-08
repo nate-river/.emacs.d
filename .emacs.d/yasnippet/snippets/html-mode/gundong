@@ -1,5 +1,0 @@
-<!--slide scroll alternate -->
-<marquee behavior="slide">if Winter comes. Can spring be far behind?</marquee>
-
-<marquee behavior="slide" direction=right loop=2 width="" height="">if Winter comes. Can spring be far behind?</marquee>
-
