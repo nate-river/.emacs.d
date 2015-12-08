@@ -1,110 +1,19 @@
-(require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
-;; (package-install 'evil)
-;; (package-install 'smex)
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-;; Use smex to handle M-x
-(setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
-(global-set-key [remap execute-extended-command] 'smex)
+(defconst *is-a-mac* (eq system-type 'darwin))
+(when *is-a-mac*
+  (require 'init-osx-keys))
 
-(evil-mode t)
-(ido-mode t)
-(ido-everywhere t)
-(global-linum-mode t)
-(global-auto-revert-mode t)
-(electric-pair-mode t)
-(show-paren-mode t)
-(auto-save-mode 0)
-(setq make-backup-files nil)
+(defconst *work-dir* "c:/users/l/desktop/documents/" )
+(when *is-a-mac*
+      (setq *work-dir* "~/Documents/Star/") )
 
-(defun qiang-comment-dwim-line (&optional arg)
-  (interactive "*P")
-  (comment-normalize-vars)
-  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
-      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
-    (comment-dwim arg)))
-(setq hippie-expand-try-functions-list
-      '(try-expand-dabbrev
-        try-expand-dabbrev-visible
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill
-        try-complete-file-name-partially
-        try-complete-file-name
-        try-expand-all-abbrevs
-        try-expand-list
-        try-expand-line
-        try-complete-lisp-symbol-partially
-        try-complete-lisp-symbol))
-        
-(defun indent-buffer ()
-  "Indent the whole buffer."
-  (interactive)
-  (save-excursion
-    (indent-region (point-min) (point-max) nil)))
+(require 'init-package)
+(require 'init-fonts)
+(require 'init-smex)
+(require 'init-hippie-expand)
+(require 'init-ido)
+(require 'init-javascript)
 
-
-(define-key evil-normal-state-map "q" 'qiang-comment-dwim-line)
-(define-key evil-normal-state-map "s" 'save-buffer)
-(define-key evil-normal-state-map "c" 'query-replace-regexp)
-(define-key evil-normal-state-map "b" 'switch-to-buffer)
-(define-key evil-normal-state-map "=" 'indent-buffer)
-
-(define-key evil-normal-state-map "\C-n" 'evil-next-line)
-(define-key evil-normal-state-map "\C-p" 'evil-previous-line)
-(define-key evil-normal-state-map "\C-j" 'evil-next-line)
-(define-key evil-normal-state-map "\C-k" 'evil-previous-line)
-(define-key evil-normal-state-map "\C-e" 'evil-end-of-line)
-
-(define-key evil-normal-state-map "\M-n" 'evil-next-line)
-(define-key evil-normal-state-map "\M-p" 'evil-previous-line)
-(define-key evil-normal-state-map "\M-j" 'evil-next-line)
-(define-key evil-normal-state-map "\M-k" 'evil-previous-line)
-(define-key evil-normal-state-map "\M-e" 'evil-end-of-line)
-
-(define-key evil-insert-state-map "\C-j" 'evil-normal-state)
-(define-key evil-insert-state-map "\C-k" 'evil-normal-state)
-(define-key evil-insert-state-map "\C-h" 'evil-normal-state)
-(define-key evil-insert-state-map "\C-l" 'evil-normal-state)
-(define-key evil-insert-state-map "\C-n" 'evil-normal-state)
-(define-key evil-insert-state-map "\C-p" 'evil-normal-state)
-(define-key evil-insert-state-map "\C-f" 'forward-char)
-(define-key evil-insert-state-map "\C-b" 'backward-char)
-
-(define-key evil-insert-state-map "\M-j" 'evil-normal-state)
-(define-key evil-insert-state-map "\M-k" 'evil-normal-state)
-(define-key evil-insert-state-map "\M-h" 'evil-normal-state)
-(define-key evil-insert-state-map "\M-l" 'evil-normal-state)
-(define-key evil-insert-state-map "\M-n" 'evil-normal-state)
-(define-key evil-insert-state-map "\M-p" 'evil-normal-state)
-
-(define-key evil-insert-state-map "\M-f" 'forward-char)
-(define-key evil-insert-state-map "\M-b" 'backward-char)
-
-(eval-after-load 'dired
-  '(progn
-     (evil-make-overriding-map dired-mode-map 'normal t)
-     (evil-add-hjkl-bindings dired-mode-map 'normal
-       "j" 'dired-next-line                   
-       "k" 'dired-previous-line                  
-       [(\/)] 'evil-search-forward                
-       "n" 'evil-search-next                
-       [(\~)] (lambda () (interactive) (dired "~/"))
-       "q" (lambda () (interactive) (dired "c:/users/l/desktop/documents/"))
-       [(tab)] 'dired-up-directory
-       ";" (lookup-key dired-mode-map ":"))))
-(eval-after-load 'ibuffer
-   '(progn
-      (define-key ibuffer-mode-map "j" 'evil-next-line)
-      (define-key ibuffer-mode-map "k" 'evil-previous-line)))
-(define-key undo-tree-map (kbd "C-/")  'hippie-expand) 
-(define-key undo-tree-map (kbd "\M-/") 'hippie-expand) 
-(global-set-key "\M-l" '(lambda () (interactive) (dired ".")))
-(global-set-key "C-l" '(lambda () (interactive) (dired ".")))
-
-(set-default-font " 14")
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-  (set-fontset-font (frame-parameter nil 'font)
-            charset
-            (font-spec :family "微软雅黑" :size 14)))
+(require 'init-evil)
+(require 'init-local)
