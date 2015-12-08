@@ -4,7 +4,7 @@
   (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
-        
+
 (defun indent-buffer ()
   "Indent the whole buffer."
   (interactive)

@@ -41,10 +41,10 @@
   '(progn
      (evil-make-overriding-map dired-mode-map 'normal t)
      (evil-add-hjkl-bindings dired-mode-map 'normal
-       "j" 'dired-next-line                   
-       "k" 'dired-previous-line                  
-       [(\/)] 'evil-search-forward                
-       "n" 'evil-search-next                
+       "j" 'dired-next-line
+       "k" 'dired-previous-line
+       [(\/)] 'evil-search-forward
+       "n" 'evil-search-next
        [(\~)] (lambda () (interactive) (dired "~/"))
        "q" (lambda () (interactive) (dired *work-dir*))
        [(tab)] 'dired-up-directory

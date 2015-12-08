@@ -6,7 +6,7 @@
 
 (defconst *work-dir* "c:/users/l/desktop/documents/" )
 (when *is-a-mac*
-      (setq *work-dir* "~/Documents/Star/") )
+  (setq *work-dir* "~/Documents/Star/") )
 
 (require 'init-package)
 (require 'init-fonts)
@@ -15,6 +15,7 @@
 (require 'init-ido)
 (require 'init-yasnippet)
 (require 'init-javascript)
+(require 'init-whitespace)
 
 (require 'init-evil)
 (require 'init-local)
