@@ -13,6 +13,7 @@
 (require 'init-smex)
 (require 'init-hippie-expand)
 (require 'init-ido)
+(require 'init-yasnippet)
 (require 'init-javascript)
 
 (require 'init-evil)
