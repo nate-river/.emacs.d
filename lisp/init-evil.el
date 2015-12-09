@@ -4,7 +4,7 @@
 (define-key evil-normal-state-map "s" 'save-buffer)
 (define-key evil-normal-state-map "c" 'query-replace-regexp)
 (define-key evil-normal-state-map "b" 'switch-to-buffer)
-(define-key evil-normal-state-map "=" 'indent-buffer)
+(define-key evil-normal-state-map "g=" 'indent-buffer)
 (define-key evil-normal-state-map "+" 'default-text-scale-increase)
 (define-key evil-normal-state-map "_" 'default-text-scale-decrease)
 
