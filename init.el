@@ -8,6 +8,10 @@
 (when *is-a-mac*
   (setq *work-dir* "~/Documents/Star/") )
 
+(defconst *font* "consolas")
+(when *is-a-mac*
+  (setq *font* "monaco") )
+
 (require 'init-package)
 (require 'init-fonts)
 (require 'init-smex)

@@ -1,5 +1,5 @@
 (require 'default-text-scale)
-;; (set-default-font "12")
+(set-default-font *font*)
 ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
 ;;   (set-fontset-font (frame-parameter nil 'font)
 ;;             charset
