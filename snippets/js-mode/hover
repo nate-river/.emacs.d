@@ -1,5 +1,0 @@
-$("$1").hover(function(){
-    $2;
-},function(){
-    $3;
-});

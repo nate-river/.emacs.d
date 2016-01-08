@@ -8,9 +8,9 @@
 (when *is-a-mac*
   (setq *work-dir* "~/Documents/Star/") )
 
-(defconst *font* "consolas")
+(defconst *font* "consolas 14")
 (when *is-a-mac*
-  (setq *font* "monaco") )
+  (setq *font* "monaco 14") )
 
 (require 'init-package)
 (require 'init-fonts)

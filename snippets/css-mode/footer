@@ -1,38 +1,38 @@
 <div class="footer-links clearfix">
     <dl class="col-links col-links-first">
-        <dt>帮助中心</dt>
-        <dd><a rel="nofollow" href="#" target="_blank">购物指南</a></dd>
-        <dd><a rel="nofollow" href="#" target="_blank">支付方式</a></dd>
-        <dd><a rel="nofollow" href="#" target="_blank">配送方式</a></dd>
-    </dl>                                             
-    <dl class="col-links ">                           
-        <dt>服务支持</dt>                             
-        <dd><a rel="nofollow" href="#" target="_blank">售后政策</a></dd>
-        <dd><a rel="nofollow" href="#" target="_blank">自助服务</a></dd>
-        <dd><a rel="nofollow" href="#" target="_blank">相关下载</a></dd>
-    </dl>                                             
-    <dl class="col-links ">                           
-        <dt>小米之家</dt>                             
-        <dd><a rel="nofollow" href="#" target="_blank">小米之家</a></dd>
-        <dd><a rel="nofollow" href="#" target="_blank">服务网点</a></dd>
-        <dd><a rel="nofollow" href="#" target="_blank">预约亲临到店服务</a></dd>
-    </dl>                                             
-    <dl class="col-links ">                           
-        <dt>关于小米</dt>                             
-        <dd><a rel="nofollow" href="#" target="_blank">了解小米</a></dd>
-        <dd><a rel="nofollow" href="#" target="_blank">加入小米</a></dd>
-        <dd><a rel="nofollow" href="#" target="_blank">联系我们</a></dd>
-    </dl>                                             
-    <dl class="col-links ">                           
-        <dt>关注我们</dt>                             
-        <dd><a rel="nofollow" href="#" target="_blank">新浪微博</a></dd>
-        <dd><a rel="nofollow" href="#" target="_blank">QQ空间</a></dd>
-        <dd><a rel="nofollow" class="J_modalWeixin" href="#"  >官方微信</a></dd>
+	<dt>帮助中心</dt>
+	<dd><a rel="nofollow" href="#" target="_blank">购物指南</a></dd>
+	<dd><a rel="nofollow" href="#" target="_blank">支付方式</a></dd>
+	<dd><a rel="nofollow" href="#" target="_blank">配送方式</a></dd>
+    </dl>
+    <dl class="col-links ">
+	<dt>服务支持</dt>
+	<dd><a rel="nofollow" href="#" target="_blank">售后政策</a></dd>
+	<dd><a rel="nofollow" href="#" target="_blank">自助服务</a></dd>
+	<dd><a rel="nofollow" href="#" target="_blank">相关下载</a></dd>
+    </dl>
+    <dl class="col-links ">
+	<dt>小米之家</dt>
+	<dd><a rel="nofollow" href="#" target="_blank">小米之家</a></dd>
+	<dd><a rel="nofollow" href="#" target="_blank">服务网点</a></dd>
+	<dd><a rel="nofollow" href="#" target="_blank">预约亲临到店服务</a></dd>
+    </dl>
+    <dl class="col-links ">
+	<dt>关于小米</dt>
+	<dd><a rel="nofollow" href="#" target="_blank">了解小米</a></dd>
+	<dd><a rel="nofollow" href="#" target="_blank">加入小米</a></dd>
+	<dd><a rel="nofollow" href="#" target="_blank">联系我们</a></dd>
+    </dl>
+    <dl class="col-links ">
+	<dt>关注我们</dt>
+	<dd><a rel="nofollow" href="#" target="_blank">新浪微博</a></dd>
+	<dd><a rel="nofollow" href="#" target="_blank">QQ空间</a></dd>
+	<dd><a rel="nofollow" class="J_modalWeixin" href="#"  >官方微信</a></dd>
     </dl>
     <div class="col-contact">
-        <p class="phone">400-100-5678</p>
-        <p>周一至周日 8:00-18:00<br>（仅收市话费）</p>
-        <a rel="nofollow" class="btn" href="#" target="_blank"  >24小时在线客服</a>
+	<p class="phone">400-100-5678</p>
+	<p>周一至周日 8:00-18:00<br>（仅收市话费）</p>
+	<a rel="nofollow" class="btn" href="#" target="_blank"  >24小时在线客服</a>
     </div>
 </div>
 
@@ -49,7 +49,7 @@ dl,dt,dd{
   line-height: 21px;
   padding: 40px 0px;
   width: 930px;
-} 
+}
 .col-links {
   border-right:1px solid rgb(223, 223, 223);
   color: rgb(109, 109, 109);

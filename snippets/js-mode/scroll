@@ -1,3 +1,0 @@
-$(window).scroll(function(){
-    $0
-})

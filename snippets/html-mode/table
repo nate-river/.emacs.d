@@ -1,4 +1,3 @@
-<!-- <table class="$1"> -->
 <table class="$1" width="1000" height="1000" bordercolor="#999" bgcolor="#ccc"
        border="1" cellspacing="" cellpadding="" align="left" >
     <thead></thead>

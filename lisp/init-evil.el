@@ -5,6 +5,10 @@
 (define-key evil-normal-state-map "c" 'query-replace-regexp)
 (define-key evil-normal-state-map "b" 'switch-to-buffer)
 (define-key evil-normal-state-map "g=" 'indent-buffer)
+
+(define-key evil-normal-state-map "g1" 'delete-other-windows)
+(define-key evil-normal-state-map "go" 'other-window)
+
 (define-key evil-normal-state-map "+" 'default-text-scale-increase)
 (define-key evil-normal-state-map "_" 'default-text-scale-decrease)
 
@@ -33,8 +37,6 @@
 (define-key evil-insert-state-map "\M-k" 'evil-normal-state)
 (define-key evil-insert-state-map "\M-h" 'evil-normal-state)
 (define-key evil-insert-state-map "\M-l" 'evil-normal-state)
-(define-key evil-insert-state-map "\M-n" 'evil-normal-state)
-(define-key evil-insert-state-map "\M-p" 'evil-normal-state)
 (define-key evil-insert-state-map "\M-f" 'forward-char)
 (define-key evil-insert-state-map "\M-b" 'backward-char)
 (eval-after-load 'dired

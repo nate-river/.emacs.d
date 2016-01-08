@@ -1,1 +1,0 @@
-var el = document.getElementsByTagName('$1')[0];

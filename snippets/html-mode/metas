@@ -1,9 +1,9 @@
 <meta name="keywords" content="关键词,多个关键词用英文 逗号隔开"/>
-<meta name="description" content="本篇网页的概述,一段话, 对网站的进一步描述"/>  
+<meta name="description" content="本篇网页的概述,一段话, 对网站的进一步描述"/>
 <meta name="author" content="网页作者的资料"/>
 <meta name="robots" content="all" />
 <meta name="robots" content="none" />
 <meta name="robots" content="index" />
 <!--  在指定的时间内跳转到某个页面   -->
 <meta http-equiv="refresh"content="5;URL=index.htm">
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">   
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">

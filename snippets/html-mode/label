@@ -1,2 +1,0 @@
-<label for="$1">$2</label>
-<input type="text" id="$1"/>
