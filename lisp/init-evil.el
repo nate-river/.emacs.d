@@ -17,7 +17,6 @@
 (define-key evil-normal-state-map "\C-j" 'evil-next-line)
 (define-key evil-normal-state-map "\C-k" 'evil-previous-line)
 (define-key evil-normal-state-map "\C-e" 'evil-end-of-line)
-
 (define-key evil-normal-state-map "\M-n" 'evil-next-line)
 (define-key evil-normal-state-map "\M-p" 'evil-previous-line)
 (define-key evil-normal-state-map "\M-j" 'evil-next-line)
@@ -39,6 +38,8 @@
 (define-key evil-insert-state-map "\M-l" 'evil-normal-state)
 (define-key evil-insert-state-map "\M-f" 'forward-char)
 (define-key evil-insert-state-map "\M-b" 'backward-char)
+
+
 (eval-after-load 'dired
   '(progn
      (evil-make-overriding-map dired-mode-map 'normal t)

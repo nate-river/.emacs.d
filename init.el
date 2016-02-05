@@ -23,3 +23,4 @@
 
 (require 'init-evil)
 (require 'init-local)
+(require 'init-zencoding)
