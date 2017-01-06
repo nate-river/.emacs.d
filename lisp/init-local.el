@@ -34,9 +34,13 @@
 (global-auto-revert-mode t)
 (electric-pair-mode t)
 (show-paren-mode t)
-(auto-save-mode 0)
+(auto-save-mode nil)
 (setq make-backup-files nil)
+(setq-default indent-tabs-mode nil)
 
 (global-set-key "\M-l" '(lambda () (interactive) (dired ".")))
+(global-set-key "\M-o" 'ido-find-file)
+(global-set-key "\M-r" 'eval-last-sexp)
+
 
 (provide 'init-local)

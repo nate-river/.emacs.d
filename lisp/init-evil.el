@@ -5,6 +5,7 @@
 (define-key evil-normal-state-map "c" 'query-replace-regexp)
 (define-key evil-normal-state-map "b" 'switch-to-buffer)
 (define-key evil-normal-state-map "g=" 'indent-buffer)
+(define-key evil-normal-state-map "\M-f" 'indent-buffer)
 
 (define-key evil-normal-state-map "g1" 'delete-other-windows)
 (define-key evil-normal-state-map "go" 'other-window)
@@ -27,8 +28,8 @@
 (define-key evil-insert-state-map "\C-k" 'evil-normal-state)
 (define-key evil-insert-state-map "\C-h" 'evil-normal-state)
 (define-key evil-insert-state-map "\C-l" 'evil-normal-state)
-(define-key evil-insert-state-map "\C-n" 'evil-normal-state)
-(define-key evil-insert-state-map "\C-p" 'evil-normal-state)
+(define-key evil-insert-state-map "\C-n" 'evil-nex-line)
+(define-key evil-insert-state-map "\C-p" 'evil-previous-line)
 (define-key evil-insert-state-map "\C-f" 'forward-char)
 (define-key evil-insert-state-map "\C-b" 'backward-char)
 
@@ -36,6 +37,8 @@
 (define-key evil-insert-state-map "\M-k" 'evil-normal-state)
 (define-key evil-insert-state-map "\M-h" 'evil-normal-state)
 (define-key evil-insert-state-map "\M-l" 'evil-normal-state)
+(define-key evil-insert-state-map "\M-n" 'evil-next-line)
+(define-key evil-insert-state-map "\M-p" 'evil-previous-line)
 (define-key evil-insert-state-map "\M-f" 'forward-char)
 (define-key evil-insert-state-map "\M-b" 'backward-char)
 
@@ -52,6 +55,7 @@
        "q" (lambda () (interactive) (dired *work-dir*))
        [(tab)] 'dired-up-directory
        ";" (lookup-key dired-mode-map ":"))))
+
 (eval-after-load 'ibuffer
   '(progn
      (define-key ibuffer-mode-map "j" 'evil-next-line)
