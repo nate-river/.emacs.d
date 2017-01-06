@@ -14,9 +14,9 @@
 (when *is-a-mac*
   (setq *work-dir* "~/Documents/Star/") )
 
-(defconst *font* "consolas 12")
+(defconst *font* "consolas 11")
 (when *is-a-mac*
-  (setq *font* "monaco 12") )
+  (setq *font* "monaco 11") )
 
 (require 'init-package)
 (require 'init-hippie-expand)

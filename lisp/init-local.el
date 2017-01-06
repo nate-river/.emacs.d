@@ -40,7 +40,5 @@
 
 (global-set-key "\M-l" '(lambda () (interactive) (dired ".")))
 (global-set-key "\M-o" 'ido-find-file)
-(global-set-key "\M-r" 'eval-last-sexp)
-
 
 (provide 'init-local)
