@@ -1,3 +1,4 @@
+(require-package 'evil)
 (evil-mode t)
 
 (define-key evil-normal-state-map "q" 'qiang-comment-dwim-line)
