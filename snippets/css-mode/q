@@ -1,8 +1,0 @@
-$1{
-  width:200px;
-  height:200px;
-  border:1px solid #e07f71;
-  background-color:#f4f4f4;
-  margin:0 auto;
-  border-radius:10px;
-}
