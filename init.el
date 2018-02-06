@@ -27,7 +27,6 @@
 (require 'init-fonts)
 (require 'init-file-tree)
 (require 'init-zencoding)
-(require 'init-yasnippet)
 
 ;;---------------------------------
 (require 'init-local)
@@ -36,7 +35,7 @@
 ;; --------------------------------
 (require 'init-javascript)
 (require 'init-web-beautify)
-(require 'init-scheme)
+;;(require 'init-scheme)
 
 ;; --------------------------------
 
