@@ -1,3 +1,4 @@
+(require-package 'default-text-scale)
 (require 'default-text-scale)
 
 (set-default-font *font*)
