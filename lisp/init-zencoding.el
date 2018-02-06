@@ -1,4 +1,4 @@
-
+(require-package 'zencoding-mode)
 (require 'zencoding-mode)
 
 (add-hook 'html-mode-hook 'zencoding-mode)
