@@ -11,6 +11,9 @@
 (define-key evil-normal-state-map "g1" 'delete-other-windows)
 (define-key evil-normal-state-map "go" 'other-window)
 
+(define-key evil-normal-state-map "-" 'hs-hide-all)
+(define-key evil-normal-state-map "+" 'hs-show-block)
+
 (define-key evil-normal-state-map "+" 'default-text-scale-increase)
 (define-key evil-normal-state-map "_" 'default-text-scale-decrease)
 

@@ -12,7 +12,7 @@
 
 (defconst *work-dir* "C:/users/l/desktop/documents/" )
 (when *is-a-mac*
-  (setq *work-dir* "~/Documents/Star/") )
+  (setq *work-dir* "~/Documents/") )
 
 (defconst *font* "consolas 11")
 (when *is-a-mac*
