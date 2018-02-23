@@ -41,4 +41,10 @@
 (global-set-key "\M-l" '(lambda () (interactive) (dired ".")))
 (global-set-key "\M-o" 'ido-find-file)
 
+(require-package 'leuven-theme)
+(load-theme 'leuven t)
+(setq org-fontify-whole-heading-line nil)
+(setq leuven-scale-outline-headlines nil)
+(setq leuven-scale-org-agenda-structure nil)
+
 (provide 'init-local)

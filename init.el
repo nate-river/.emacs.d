@@ -14,9 +14,9 @@
 (when *is-a-mac*
   (setq *work-dir* "~/Documents/") )
 
-(defconst *font* "consolas 11")
+(defconst *font* "consolas 13")
 (when *is-a-mac*
-  (setq *font* "monaco 11") )
+  (setq *font* "courier 13") )
 
 (require 'init-package)
 (require 'init-hippie-expand)
@@ -46,7 +46,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (phpcbf yasnippet zencoding-mode neotree term+ sqlplus json-mode exec-path-from-shell web-beautify company auto-complete php-mode php+-mode auto-save-buffers-enhanced default-text-scale markdown-mode+ js2-mode smex paren-face paredit evil))))
+    (leuven-theme color-theme phpcbf yasnippet zencoding-mode neotree term+ sqlplus json-mode exec-path-from-shell web-beautify company auto-complete php-mode php+-mode auto-save-buffers-enhanced default-text-scale markdown-mode+ js2-mode smex paren-face paredit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

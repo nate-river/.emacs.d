@@ -15,6 +15,7 @@
 
 (define-key evil-normal-state-map "-" 'hs-hide-block)
 (define-key evil-normal-state-map "=" 'hs-show-block)
+(define-key evil-normal-state-map "\C-i" 'hs-toggle-hiding)
 
 
 (define-key evil-normal-state-map "+" 'default-text-scale-increase)
@@ -30,6 +31,9 @@
 (define-key evil-normal-state-map "\M-j" 'evil-next-line)
 (define-key evil-normal-state-map "\M-k" 'evil-previous-line)
 (define-key evil-normal-state-map "\M-e" 'evil-end-of-line)
+
+(define-key evil-normal-state-map "\M-v" 'yank)
+(define-key evil-normal-state-map "\M-s" 'save-buffer)
 
 (define-key evil-insert-state-map "\C-j" 'evil-normal-state)
 (define-key evil-insert-state-map "\C-k" 'evil-normal-state)
@@ -48,6 +52,9 @@
 (define-key evil-insert-state-map "\M-p" 'evil-previous-line)
 (define-key evil-insert-state-map "\M-f" 'forward-char)
 (define-key evil-insert-state-map "\M-b" 'backward-char)
+
+(define-key evil-insert-state-map "\M-v" 'yank)
+(define-key evil-insert-state-map "\M-s" 'save-buffer)
 
 
 (eval-after-load 'dired
